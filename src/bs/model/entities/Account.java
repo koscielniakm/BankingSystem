@@ -1,13 +1,18 @@
 package bs.model.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "account")
@@ -32,6 +37,14 @@ public class Account implements DbEntity, Serializable {
 	@Column(name = "Email")
 	private String email;
 	
+	@Column(name = "DateOpen")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date openDate;
+	
+    @OneToOne(mappedBy="account")
+    @PrimaryKeyJoinColumn
+	private Person person;
+    
 	public Account() { }
 
 	public Integer getId() {
@@ -54,6 +67,14 @@ public class Account implements DbEntity, Serializable {
 		return email;
 	}
 
+	public Date getOpenDate() {
+		return openDate;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -73,5 +94,13 @@ public class Account implements DbEntity, Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	public void setOpenDate(Date openDate) {
+		this.openDate = openDate;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
 }
