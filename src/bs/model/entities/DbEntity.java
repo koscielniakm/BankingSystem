@@ -1,6 +1,6 @@
 package bs.model.entities;
 
-public interface Entity {
+public interface DbEntity {
 	public Integer getId();
-	public void setId();
+	public void setId(Integer id);
 }
