@@ -12,7 +12,7 @@ public abstract class AbstractDao<T> {
 		persistenceSupport = new PersistenceSupport();
 	}
 	
-	public void persistEntity(T entity) {
+	protected void persistEntity(T entity) {
 		EntityManager entityManager = persistenceSupport.getEntityManager();
 		EntityTransaction currentTranslation = entityManager.getTransaction();
 		currentTranslation.begin();
@@ -21,7 +21,7 @@ public abstract class AbstractDao<T> {
 		persistenceSupport.closeEntityManager();
 	}
 	
-	public void mergeEntity(T entity) {
+	protected void mergeEntity(T entity) {
 		EntityManager entityManager = persistenceSupport.getEntityManager();
 		EntityTransaction currentTranslation = entityManager.getTransaction();
 		currentTranslation.begin();
@@ -30,7 +30,7 @@ public abstract class AbstractDao<T> {
 		persistenceSupport.closeEntityManager();
 	}
 	
-	public void removeEntity(Class<T> entityClass, Integer id) {
+	protected void removeEntity(Class<T> entityClass, Integer id) {
 		EntityManager entityManager = persistenceSupport.getEntityManager();
 		EntityTransaction currentTranslation = entityManager.getTransaction();
 		currentTranslation.begin();

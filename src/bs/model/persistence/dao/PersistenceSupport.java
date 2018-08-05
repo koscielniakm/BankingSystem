@@ -4,8 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import bs.model.config.AppConfig;
-
 public class PersistenceSupport {
 	
 	private EntityManagerFactory entityManagerFactory;
