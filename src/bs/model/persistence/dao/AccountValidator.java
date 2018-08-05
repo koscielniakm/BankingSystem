@@ -14,14 +14,19 @@ public class AccountValidator implements DaoValidator<Account> {
 	}
 
 	@Override
-	public boolean validateBeforeUpdate(Account obj) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean validateBeforeUpdate(Account account) {
+		if (account == null) return false;
+		if (account.getId() > 0 &&
+			validateAccountNumber(account.getAccountNumber()) &&
+			validatePassword(account.getPassword()) &&
+			validateEmail(account.getEmail()))
+			return true;
+		else return false;
 	}
 
 	@Override
 	public boolean validateBeforeDelete(Integer id) {
-		// TODO Auto-generated method stub
+		if (id > 0 ) return true;
 		return false;
 	}
 	
