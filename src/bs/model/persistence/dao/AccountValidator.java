@@ -26,7 +26,7 @@ public class AccountValidator implements DaoValidator<Account> {
 
 	@Override
 	public boolean validateBeforeDelete(Integer id) {
-		if (id > 0 ) return true;
+		if (id > 0) return true;
 		return false;
 	}
 	
