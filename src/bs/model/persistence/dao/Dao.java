@@ -1,4 +1,4 @@
-package bs.model.dao;
+package bs.model.persistence.dao;
 
 import java.util.List;
 
