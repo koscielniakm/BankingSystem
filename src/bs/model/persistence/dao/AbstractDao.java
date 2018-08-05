@@ -40,4 +40,8 @@ public abstract class AbstractDao<T> {
 		persistenceSupport.closeEntityManager();
 	}
 
+	protected PersistenceSupport getPersistenceSupport() {
+		return persistenceSupport;
+	}
+
 }
