@@ -4,7 +4,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-public abstract class AbstractDao<T> {
+import bs.model.persistence.entities.DbEntity;
+
+public abstract class AbstractDao<T extends DbEntity> {
 
 	private PersistenceSupport persistenceSupport;
 	
@@ -16,6 +18,7 @@ public abstract class AbstractDao<T> {
 		EntityManager entityManager = persistenceSupport.getEntityManager();
 		EntityTransaction currentTranslation = entityManager.getTransaction();
 		currentTranslation.begin();
+		entity.setId(null);
 		entityManager.persist(entity);
 		currentTranslation.commit();
 		persistenceSupport.closeEntityManager();
