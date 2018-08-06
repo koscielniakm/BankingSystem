@@ -5,7 +5,9 @@ public class AppConfig {
 	public static final String PERSISTENCE_UNIT_NAME = "BankingSystemPersistence";
 	
 	// Database
-	public static final int DB_ACCOUNT_ACCOUNTNUMBER_LENGTH = 12;
+	public static final int DB_ACCOUNT_ACCOUNTNUMBER_LENGTH = 9;
+	public static final int DB_ACCOUNT_ACCOUNTNUMBER_MIN_VALUE = 100000000;
+	public static final int DB_ACCOUNT_ACCOUNTNUMBER_MAX_VALUE = 999999999;
 	public static final int DB_ACCOUNT_PASSWORD_MAX_LENGTH = 64;
 	public static final int DB_ACCOUNT_EMAIL_LENGTH = 50;
 	// Application

@@ -10,7 +10,7 @@ public class AccountNumberGenerator {
 	private static final int VALUE_MIN = AppConfig.DB_ACCOUNT_ACCOUNTNUMBER_MIN_VALUE;
 	private static final int VALUE_MAX = AppConfig.DB_ACCOUNT_ACCOUNTNUMBER_MAX_VALUE;
 	
-	public static int generateAccountNumber(AccountDao dao) {
+	public int generateAccountNumber(AccountDao dao) {
 		Random random = new Random();
 		int generatedNumber = 0;
 		do {

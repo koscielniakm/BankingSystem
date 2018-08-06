@@ -69,4 +69,13 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 		return loggedAccount;
 	}
 	
+	public List<Account> getByAccountNumber(int accountNumber) {
+		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		List<Account> accounts = entityManager
+			.createQuery("FROM Account a WHERE a.accountNumber = :accountNumber", Account.class)
+			.setParameter("accountNumber", accountNumber)
+			.getResultList();
+		return accounts;
+	}	
+	
 }
