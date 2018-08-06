@@ -17,7 +17,7 @@ public class LoginService {
 	
 	public LoginService(int accountNumber, String password) {
 		this.accountNumber = accountNumber;
-		this.password = password;
+		this.password = PasswordHasher.hashPassword(password);
 		this.accountDao = new AccountDao();
 		this.status = LoginStatus.PENDING;
 	}
