@@ -1,5 +1,6 @@
 package bs.model.persistence.dao;
 
+import bs.model.config.AppConfig;
 import bs.model.persistence.entities.Account;
 
 public class AccountValidator implements DaoValidator<Account> {
