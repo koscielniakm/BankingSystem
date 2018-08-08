@@ -46,7 +46,7 @@ public class PersonDao extends AbstractDao<PersonEntity> implements Dao<PersonEn
 	public List<PersonEntity> getAll() {
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
 		List<PersonEntity> people = entityManager
-			.createQuery("FROM Person p", PersonEntity.class).getResultList();
+			.createQuery("FROM PersonEntity p", PersonEntity.class).getResultList();
 		return people;
 	}
 

@@ -48,14 +48,14 @@ public class AccountDao extends AbstractDao<AccountEntity> implements Dao<Accoun
 	public List<AccountEntity> getAll() {
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
 		List<AccountEntity> allAccounts = entityManager
-			.createQuery("FROM Account a", AccountEntity.class).getResultList();
+			.createQuery("FROM AccountEntity a", AccountEntity.class).getResultList();
 		return allAccounts;
 	}
 	
 	public AccountEntity login(int accountNumber, String password) {
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
 		Query query =  entityManager
-			.createQuery("FROM Account a WHERE a.accountNumber = :accountNumber AND a.password = :password")
+			.createQuery("FROM AccountEntity a WHERE a.accountNumber = :accountNumber AND a.password = :password")
 			.setParameter("accountNumber", accountNumber)
 			.setParameter("password", password);
 		AccountEntity loggedAccount = new AccountEntity();
@@ -72,7 +72,7 @@ public class AccountDao extends AbstractDao<AccountEntity> implements Dao<Accoun
 	public List<AccountEntity> getByAccountNumber(int accountNumber) {
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
 		List<AccountEntity> accounts = entityManager
-			.createQuery("FROM Account a WHERE a.accountNumber = :accountNumber", AccountEntity.class)
+			.createQuery("FROM AccountEntity a WHERE a.accountNumber = :accountNumber", AccountEntity.class)
 			.setParameter("accountNumber", accountNumber)
 			.getResultList();
 		return accounts;
