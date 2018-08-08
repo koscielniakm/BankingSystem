@@ -1,11 +1,11 @@
 package bs.model.persistence.dao;
 
 import bs.model.config.AppConfig;
-import bs.model.persistence.entities.Account;
+import bs.model.persistence.entities.AccountEntity;
 
-public class AccountValidator implements DaoValidator<Account> {
+public class AccountValidator implements DaoValidator<AccountEntity> {
 
-	public boolean validateBeforeCreate(Account account) {
+	public boolean validateBeforeCreate(AccountEntity account) {
 		if (account == null) return false;
 		if (validateAccountNumber(account.getAccountNumber()) &&
 			validatePassword(account.getPassword()) &&
@@ -15,7 +15,7 @@ public class AccountValidator implements DaoValidator<Account> {
 	}
 
 	@Override
-	public boolean validateBeforeUpdate(Account account) {
+	public boolean validateBeforeUpdate(AccountEntity account) {
 		if (account == null) return false;
 		if (account.getId() > 0 &&
 			validateAccountNumber(account.getAccountNumber()) &&

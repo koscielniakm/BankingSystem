@@ -6,9 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import bs.model.persistence.entities.Account;
+import bs.model.persistence.entities.AccountEntity;
 
-public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
+public class AccountDao extends AbstractDao<AccountEntity> implements Dao<AccountEntity> {
 
 	private AccountValidator validator;
 	
@@ -17,14 +17,14 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 	}
 	
 	@Override
-	public boolean create(Account account) {
+	public boolean create(AccountEntity account) {
 		if (!validator.validateBeforeCreate(account)) return false;
 		super.persistEntity(account);
 		return true;
 	}
 
 	@Override
-	public boolean update(Account account) {
+	public boolean update(AccountEntity account) {
 		if (!validator.validateBeforeUpdate(account)) return false;
 		super.mergeEntity(account);
 		return true;
@@ -33,34 +33,34 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 	@Override
 	public boolean delete(int id) {
 		if (!validator.validateBeforeDelete(id)) return false;
-		super.removeEntity(Account.class, id);
+		super.removeEntity(AccountEntity.class, id);
 		return true;
 	}
 
 	@Override
-	public Account getById(int id) {
+	public AccountEntity getById(int id) {
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
-		Account accountById = entityManager.find(Account.class, id);
+		AccountEntity accountById = entityManager.find(AccountEntity.class, id);
 		return accountById;
 	}
 
 	@Override
-	public List<Account> getAll() {
+	public List<AccountEntity> getAll() {
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
-		List<Account> allAccounts = entityManager
-			.createQuery("FROM Account a", Account.class).getResultList();
+		List<AccountEntity> allAccounts = entityManager
+			.createQuery("FROM Account a", AccountEntity.class).getResultList();
 		return allAccounts;
 	}
 	
-	public Account login(int accountNumber, String password) {
+	public AccountEntity login(int accountNumber, String password) {
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
 		Query query =  entityManager
 			.createQuery("FROM Account a WHERE a.accountNumber = :accountNumber AND a.password = :password")
 			.setParameter("accountNumber", accountNumber)
 			.setParameter("password", password);
-		Account loggedAccount = new Account();
+		AccountEntity loggedAccount = new AccountEntity();
 		try {
-			loggedAccount = (Account) query.getSingleResult();
+			loggedAccount = (AccountEntity) query.getSingleResult();
 		} catch (NoResultException e) {
 			loggedAccount = null;
 		} finally {
@@ -69,10 +69,10 @@ public class AccountDao extends AbstractDao<Account> implements Dao<Account> {
 		return loggedAccount;
 	}
 	
-	public List<Account> getByAccountNumber(int accountNumber) {
+	public List<AccountEntity> getByAccountNumber(int accountNumber) {
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
-		List<Account> accounts = entityManager
-			.createQuery("FROM Account a WHERE a.accountNumber = :accountNumber", Account.class)
+		List<AccountEntity> accounts = entityManager
+			.createQuery("FROM Account a WHERE a.accountNumber = :accountNumber", AccountEntity.class)
 			.setParameter("accountNumber", accountNumber)
 			.getResultList();
 		return accounts;

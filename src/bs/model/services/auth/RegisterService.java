@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.NoResultException;
 
 import bs.model.persistence.dao.AccountDao;
-import bs.model.persistence.entities.Account;
+import bs.model.persistence.entities.AccountEntity;
 
 public class RegisterService {
 
@@ -13,7 +13,7 @@ public class RegisterService {
 	
 	private AccountNumberGenerator numberGenerator;
 	
-	private Account registeredAccount;
+	private AccountEntity registeredAccount;
 	
 	private RegisterStatus status;
 	
@@ -24,7 +24,7 @@ public class RegisterService {
 	}
 	
 	public boolean register(String password, String email) {
-		Account generatedAccount = generateAccount(password, email);
+		AccountEntity generatedAccount = generateAccount(password, email);
 		if (accountDao.create(generatedAccount)) {
 			registeredAccount = generatedAccount;
 			status = RegisterStatus.SUCCESS;
@@ -35,8 +35,8 @@ public class RegisterService {
 		}
 	}
 	
-	private Account generateAccount(String password, String email) {
-		Account generatedAccount = new Account();
+	private AccountEntity generateAccount(String password, String email) {
+		AccountEntity generatedAccount = new AccountEntity();
 		generatedAccount.setIdPerson(null);
 		generatedAccount.setAccountNumber(numberGenerator.generateAccountNumber(accountDao));
 		generatedAccount.setPassword(PasswordHasher.hashPassword(password));
@@ -45,7 +45,7 @@ public class RegisterService {
 		return generatedAccount;
 	}
 	
-	public Account getRegisteredAccount() {
+	public AccountEntity getRegisteredAccount() {
 		if (registeredAccount == null) throw new NoResultException();
 		else return registeredAccount;
 	}

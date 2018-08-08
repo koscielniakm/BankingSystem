@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "person")
-public class Person implements DbEntity, Serializable {
+public class PersonEntity implements DbEntity, Serializable {
 
 	private static final long serialVersionUID = -3540831518654069251L;
 
@@ -33,9 +33,9 @@ public class Person implements DbEntity, Serializable {
 	
     @OneToOne
     @PrimaryKeyJoinColumn
-	private Account account;
+	private AccountEntity account;
     
-	public Person() { }
+	public PersonEntity() { }
 
 	public Integer getId() {
 		return id;
@@ -53,7 +53,7 @@ public class Person implements DbEntity, Serializable {
 		return lastName;
 	}
 
-	public Account getAccount() {
+	public AccountEntity getAccount() {
 		return account;
 	}
 
@@ -73,7 +73,7 @@ public class Person implements DbEntity, Serializable {
 		this.lastName = lastName;
 	}
 
-	public void setAccount(Account account) {
+	public void setAccount(AccountEntity account) {
 		this.account = account;
 	}
 

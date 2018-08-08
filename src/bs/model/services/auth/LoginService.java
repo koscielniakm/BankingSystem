@@ -1,7 +1,7 @@
 package bs.model.services.auth;
 
 import bs.model.persistence.dao.AccountDao;
-import bs.model.persistence.entities.Account;
+import bs.model.persistence.entities.AccountEntity;
 
 public class LoginService {
 	
@@ -9,7 +9,7 @@ public class LoginService {
 	
 	private String password;
 	
-	private Account loggedAccount;
+	private AccountEntity loggedAccount;
 	
 	private AccountDao accountDao;
 	
@@ -33,7 +33,7 @@ public class LoginService {
 		}
 	}
 	
-	public Account getLoggedAccount() {
+	public AccountEntity getLoggedAccount() {
 		return loggedAccount;
 	}
 	

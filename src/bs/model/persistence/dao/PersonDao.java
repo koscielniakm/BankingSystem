@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import bs.model.persistence.entities.Person;
+import bs.model.persistence.entities.PersonEntity;
 
-public class PersonDao extends AbstractDao<Person> implements Dao<Person>{
+public class PersonDao extends AbstractDao<PersonEntity> implements Dao<PersonEntity>{
 	
 	private PersonValidator validator;
 	
@@ -15,14 +15,14 @@ public class PersonDao extends AbstractDao<Person> implements Dao<Person>{
 	}
 	
 	@Override
-	public boolean create(Person person) {
+	public boolean create(PersonEntity person) {
 		if (!validator.validateBeforeCreate(person)) return false;
 		super.persistEntity(person);
 		return true;
 	}
 
 	@Override
-	public boolean update(Person person) {
+	public boolean update(PersonEntity person) {
 		if (!validator.validateBeforeUpdate(person)) return false;
 		super.mergeEntity(person);
 		return true;
@@ -31,22 +31,22 @@ public class PersonDao extends AbstractDao<Person> implements Dao<Person>{
 	@Override
 	public boolean delete(int id) {
 		if (!validator.validateBeforeDelete(id)) return false;
-		super.removeEntity(Person.class, id);
+		super.removeEntity(PersonEntity.class, id);
 		return false;
 	}
 
 	@Override
-	public Person getById(int id) {
+	public PersonEntity getById(int id) {
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
-		Person person = entityManager.find(Person.class, id);
+		PersonEntity person = entityManager.find(PersonEntity.class, id);
 		return person;
 	}
 
 	@Override
-	public List<Person> getAll() {
+	public List<PersonEntity> getAll() {
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
-		List<Person> people = entityManager
-			.createQuery("FROM Person p", Person.class).getResultList();
+		List<PersonEntity> people = entityManager
+			.createQuery("FROM Person p", PersonEntity.class).getResultList();
 		return people;
 	}
 

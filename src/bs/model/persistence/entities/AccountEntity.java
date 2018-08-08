@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "account")
-public class Account implements DbEntity, Serializable {
+public class AccountEntity implements DbEntity, Serializable {
 	
 	private static final long serialVersionUID = 1405684322968450778L;
 
@@ -43,9 +43,9 @@ public class Account implements DbEntity, Serializable {
 	
     @OneToOne(mappedBy="account")
     @PrimaryKeyJoinColumn
-	private Person person;
+	private PersonEntity person;
     
-	public Account() { }
+	public AccountEntity() { }
 
 	public Integer getId() {
 		return id;
@@ -71,7 +71,7 @@ public class Account implements DbEntity, Serializable {
 		return openDate;
 	}
 
-	public Person getPerson() {
+	public PersonEntity getPerson() {
 		return person;
 	}
 
@@ -99,7 +99,7 @@ public class Account implements DbEntity, Serializable {
 		this.openDate = openDate;
 	}
 
-	public void setPerson(Person person) {
+	public void setPerson(PersonEntity person) {
 		this.person = person;
 	}
 

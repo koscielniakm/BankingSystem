@@ -1,11 +1,11 @@
 package bs.model.persistence.dao;
 
-import bs.model.persistence.entities.Person;
+import bs.model.persistence.entities.PersonEntity;
 
-public class PersonValidator implements DaoValidator<Person> {
+public class PersonValidator implements DaoValidator<PersonEntity> {
 
 	@Override
-	public boolean validateBeforeCreate(Person person) {
+	public boolean validateBeforeCreate(PersonEntity person) {
 		if (person == null) return false;
 		if (validateFirstName(person.getFirstName()) &&
 			validateLastName(person.getLastName()))
@@ -14,7 +14,7 @@ public class PersonValidator implements DaoValidator<Person> {
 	}
 
 	@Override
-	public boolean validateBeforeUpdate(Person person) {
+	public boolean validateBeforeUpdate(PersonEntity person) {
 		if (person == null) return false;
 		if (person.getId() > 0 &&
 			validateFirstName(person.getFirstName()) &&
