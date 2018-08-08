@@ -2,12 +2,16 @@ package bs.model.persistence.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -45,6 +49,9 @@ public class AccountEntity implements DbEntity, Serializable {
     @PrimaryKeyJoinColumn
 	private PersonEntity person;
     
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<LoginEntity> loginList;
+    
 	public AccountEntity() { }
 
 	public Integer getId() {
@@ -75,6 +82,10 @@ public class AccountEntity implements DbEntity, Serializable {
 		return person;
 	}
 
+	public List<LoginEntity> getLoginList() {
+		return loginList;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -101,6 +112,10 @@ public class AccountEntity implements DbEntity, Serializable {
 
 	public void setPerson(PersonEntity person) {
 		this.person = person;
+	}
+
+	public void setLoginList(List<LoginEntity> loginList) {
+		this.loginList = loginList;
 	}
 
 }
