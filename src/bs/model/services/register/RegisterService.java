@@ -1,4 +1,4 @@
-package bs.model.services.auth;
+package bs.model.services.register;
 
 import java.util.Date;
 
@@ -6,6 +6,7 @@ import javax.persistence.NoResultException;
 
 import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.entities.AccountEntity;
+import bs.model.services.security.PasswordHasher;
 
 public class RegisterService {
 

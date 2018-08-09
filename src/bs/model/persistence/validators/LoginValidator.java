@@ -1,8 +1,8 @@
-package bs.model.persistence.dao;
+package bs.model.persistence.validators;
 
 import java.util.Date;
 
-import bs.model.config.AppConfig;
+import bs.model.config.Finals;
 import bs.model.persistence.entities.LoginEntity;
 
 public class LoginValidator implements DaoValidator<LoginEntity> {
@@ -33,7 +33,7 @@ public class LoginValidator implements DaoValidator<LoginEntity> {
 
 	private boolean validateIp(String ip) {
 		if (ip == null) return false;
-		if (ip.length() > AppConfig.DB_LOGIN_IP_LENGTH) return false;
+		if (ip.length() > Finals.DB_LOGIN_IP_LENGTH) return false;
 		return true;
 	}
 	

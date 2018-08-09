@@ -1,4 +1,4 @@
-package bs.model.services.auth;
+package bs.model.services.security;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

@@ -1,6 +1,6 @@
-package bs.model.persistence.dao;
+package bs.model.persistence.validators;
 
-import bs.model.config.AppConfig;
+import bs.model.config.Finals;
 import bs.model.persistence.entities.AccountEntity;
 
 public class AccountValidator implements DaoValidator<AccountEntity> {
@@ -36,21 +36,21 @@ public class AccountValidator implements DaoValidator<AccountEntity> {
 			return false;
 		if (accountNumber <= 0)
 			return false;
-		if (accountNumber.toString().length() < AppConfig.DB_ACCOUNT_ACCOUNTNUMBER_LENGTH)
+		if (accountNumber.toString().length() < Finals.DB_ACCOUNT_ACCOUNTNUMBER_LENGTH)
 			return false;
 		return true;
 	}
 	
 	private boolean validatePassword(String password) {
-		if (password == null || password.length() < AppConfig.ACCOUNT_PASSWORD_MIN_LENGTH)
+		if (password == null || password.length() < Finals.ACCOUNT_PASSWORD_MIN_LENGTH)
 			return false;
-		if (password.length() > AppConfig.DB_ACCOUNT_PASSWORD_MAX_LENGTH)
+		if (password.length() > Finals.DB_ACCOUNT_PASSWORD_MAX_LENGTH)
 			return false;
 		else return true;
 	}
 	
 	private boolean validateEmail(String email) {
-		if (email == null || email.length() > AppConfig.DB_ACCOUNT_EMAIL_LENGTH)
+		if (email == null || email.length() > Finals.DB_ACCOUNT_EMAIL_LENGTH)
 			return false;
 		// TODO regex
 		return true;

@@ -1,4 +1,4 @@
-package bs.model.services.auth;
+package bs.model.services.register;
 
 public enum RegisterStatus {
 	PENDING, FAILED, SUCCESS

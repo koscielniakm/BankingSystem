@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import bs.model.config.AppConfig;
+import bs.model.config.Finals;
 
 public class PersistenceSupport {
 	
@@ -13,7 +13,7 @@ public class PersistenceSupport {
 	private EntityManager entityManager;
 	
 	public PersistenceSupport() {
-		entityManagerFactory = Persistence.createEntityManagerFactory(AppConfig.PERSISTENCE_UNIT_NAME);
+		entityManagerFactory = Persistence.createEntityManagerFactory(Finals.PERSISTENCE_UNIT_NAME);
 		entityManager = entityManagerFactory.createEntityManager();
 	}
 	

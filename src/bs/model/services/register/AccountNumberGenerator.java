@@ -1,14 +1,14 @@
-package bs.model.services.auth;
+package bs.model.services.register;
 
 import java.util.Random;
 
-import bs.model.config.AppConfig;
+import bs.model.config.Finals;
 import bs.model.persistence.dao.AccountDao;
 
 public class AccountNumberGenerator {
 
-	private static final int VALUE_MIN = AppConfig.DB_ACCOUNT_ACCOUNTNUMBER_MIN_VALUE;
-	private static final int VALUE_MAX = AppConfig.DB_ACCOUNT_ACCOUNTNUMBER_MAX_VALUE;
+	private static final int VALUE_MIN = Finals.DB_ACCOUNT_ACCOUNTNUMBER_MIN_VALUE;
+	private static final int VALUE_MAX = Finals.DB_ACCOUNT_ACCOUNTNUMBER_MAX_VALUE;
 	
 	public int generateAccountNumber(AccountDao dao) {
 		Random random = new Random();

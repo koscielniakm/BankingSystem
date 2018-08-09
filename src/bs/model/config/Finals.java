@@ -1,6 +1,6 @@
 package bs.model.config;
 
-public class AppConfig {
+public class Finals {
 	
 	public static final String PERSISTENCE_UNIT_NAME = "BankingSystemPersistence";
 	

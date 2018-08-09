@@ -1,4 +1,4 @@
-package bs.model.persistence.dao;
+package bs.model.persistence.validators;
 
 import bs.model.persistence.entities.PersonEntity;
 

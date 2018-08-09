@@ -2,6 +2,7 @@ package bs.model.services.auth;
 
 import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.entities.AccountEntity;
+import bs.model.services.security.PasswordHasher;
 
 public class LoginService {
 	

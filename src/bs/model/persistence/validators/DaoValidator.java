@@ -1,4 +1,4 @@
-package bs.model.persistence.dao;
+package bs.model.persistence.validators;
 
 public interface DaoValidator<T> {
 	public boolean validateBeforeCreate(T obj);
