@@ -10,7 +10,7 @@ public class IpGetter {
 		InetAddress inetAddress = null;
 		try {
 			inetAddress = InetAddress.getLocalHost();
-			ipAddress = inetAddress.toString();
+			ipAddress = inetAddress.getHostAddress().toString();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}

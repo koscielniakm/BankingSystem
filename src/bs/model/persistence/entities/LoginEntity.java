@@ -36,7 +36,7 @@ public class LoginEntity implements DbEntity, Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 
-	@Column(name = "success")
+	@Column(name = "success", columnDefinition="BIT(1)")
 	private boolean success;
 	
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = AccountEntity.class)
@@ -61,7 +61,7 @@ public class LoginEntity implements DbEntity, Serializable {
 		return date;
 	}
 
-	public boolean isSuccess() {
+	public Boolean isSuccess() {
 		return success;
 	}
 
@@ -85,7 +85,7 @@ public class LoginEntity implements DbEntity, Serializable {
 		this.date = date;
 	}
 
-	public void setSuccess(boolean success) {
+	public void setSuccess(Boolean success) {
 		this.success = success;
 	}
 

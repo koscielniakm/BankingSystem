@@ -20,10 +20,8 @@ public class LoginApi {
 		String incomingPassword = incomingData.getString("Password");
 		LoginService loginService = new LoginService(incomingAccountNumber, incomingPassword);
 		boolean status = loginService.login();
-		if (status)
-			return Response.ok().build();
-		else
-			return Response.status(400).build();	
+		if (status) return Response.ok().build();
+		else return Response.status(400).build();	
 	}
 	
 }
