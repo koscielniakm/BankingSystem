@@ -26,7 +26,7 @@ public class LoginEntity implements DbEntity, Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "id_account")
+	@Column(name = "id_account", nullable = true)
 	private Integer idAccount;
 
 	@Column(name = "ip")
@@ -40,7 +40,7 @@ public class LoginEntity implements DbEntity, Serializable {
 	private boolean success;
 	
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = AccountEntity.class)
-	@JoinColumn(name = "id_account", insertable = false, updatable = false)
+	@JoinColumn(name = "id_account", insertable = false, updatable = false, nullable = true)
 	private AccountEntity account;
 
 	public LoginEntity() { }

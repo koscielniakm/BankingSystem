@@ -58,13 +58,17 @@ public class LoginService {
 	}
 	
 	private LoginEntity generateCurrentLoginEntity(LoginStatus status) {
+		//if (status == LoginStatus.PENDING) throw new IllegalArgumentException();
 		LoginEntity currentLogin = new LoginEntity();
-		currentLogin.setIdAccount(accountNumber);
+		if (status == LoginStatus.SUCCESS)
+			currentLogin.setIdAccount(accountNumber);
+		else
+			currentLogin.setIdAccount(null);
 		currentLogin.setIp(IpGetter.getIp());
 		currentLogin.setDate(new Date());
 		if (status == LoginStatus.SUCCESS)
 			currentLogin.setSuccess(true);
-		else if (status == LoginStatus.FAILED)
+		else
 			currentLogin.setSuccess(false);
 		return currentLogin;
 	}
