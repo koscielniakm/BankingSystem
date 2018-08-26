@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 
 import bs.model.config.Finals;
 
-public class PersistenceSupport {
+public class PersistenceSupport implements AutoCloseable {
 	
 	private EntityManagerFactory entityManagerFactory;
 	
@@ -25,6 +25,11 @@ public class PersistenceSupport {
 	public void closeEntityManager() {
 		entityManager.close();
 		entityManagerFactory.close();
+	}
+
+	@Override
+	public void close() throws Exception {
+		closeEntityManager();	
 	}
 	
 }
