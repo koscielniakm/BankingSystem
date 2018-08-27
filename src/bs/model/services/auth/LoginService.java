@@ -9,6 +9,9 @@ import bs.model.persistence.entities.LoginEntity;
 import bs.model.services.security.IpGetter;
 import bs.model.services.security.PasswordHasher;
 
+/**
+ * Class used to login user into application. 
+ */
 public class LoginService {
 	
 	private Integer accountNumber;
@@ -23,6 +26,10 @@ public class LoginService {
 	
 	private LoginStatus status;
 	
+	/**
+	 * @param accountNumber Number of account which user want to log in.
+	 * @param password Password (not hashed) entered by user.
+	 */
 	public LoginService(int accountNumber, String password) {
 		this.accountNumber = accountNumber;
 		this.password = PasswordHasher.hashPassword(password);
@@ -31,6 +38,9 @@ public class LoginService {
 		this.status = LoginStatus.PENDING;
 	}
 	
+	/**
+	 * @return Result of login try.
+	 */
 	public boolean login() {
 		loggedAccount = accountDao.login(accountNumber, password);
 		if (loggedAccount != null) {
@@ -44,10 +54,16 @@ public class LoginService {
 		}
 	}
 	
+	/**
+	 * @return Logged account.
+	 */
 	public AccountEntity getLoggedAccount() {
 		return loggedAccount;
 	}
 	
+	/**
+	 * @return Status of current login.
+	 */
 	public LoginStatus getStatus() {
 		return status;
 	}
@@ -58,7 +74,7 @@ public class LoginService {
 	}
 	
 	private LoginEntity generateCurrentLoginEntity(LoginStatus status) {
-		//if (status == LoginStatus.PENDING) throw new IllegalArgumentException();
+		if (status == LoginStatus.PENDING) throw new IllegalArgumentException();
 		LoginEntity currentLogin = new LoginEntity();
 		if (status == LoginStatus.SUCCESS)
 			currentLogin.setIdAccount(accountNumber);
