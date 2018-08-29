@@ -73,6 +73,10 @@ public class LoginService {
 		loginDao.create(currentLogin);
 	}
 	
+	/**
+	 * @param status Status (ex. status of current login)
+	 * @return Generated LoginEntity of current login ready to insert to database.
+	 */
 	private LoginEntity generateCurrentLoginEntity(LoginStatus status) {
 		if (status == LoginStatus.PENDING) throw new IllegalArgumentException();
 		LoginEntity currentLogin = new LoginEntity();
