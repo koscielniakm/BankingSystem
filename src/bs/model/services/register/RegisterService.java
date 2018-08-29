@@ -8,6 +8,11 @@ import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.entities.AccountEntity;
 import bs.model.services.security.PasswordHasher;
 
+/**
+ * Service used to register new account. 
+ * @author Mateusz
+ *
+ */
 public class RegisterService {
 
 	private AccountDao accountDao;
@@ -24,6 +29,12 @@ public class RegisterService {
 		status = RegisterStatus.PENDING;
 	}
 	
+	/**
+	 * Begin registration process.
+	 * @param password New account password (not hashed)
+	 * @param email Email for new account
+	 * @return Result of register.
+	 */
 	public boolean register(String password, String email) {
 		AccountEntity generatedAccount = generateAccount(password, email);
 		if (accountDao.create(generatedAccount)) {
