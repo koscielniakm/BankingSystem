@@ -39,6 +39,20 @@ public class LoginService {
 	}
 	
 	/**
+	 * @return Logged account.
+	 */
+	public AccountEntity getLoggedAccount() {
+		return loggedAccount;
+	}
+	
+	/**
+	 * @return Status of current login.
+	 */
+	public LoginStatus getStatus() {
+		return status;
+	}
+	
+	/**
 	 * @return Result of login try.
 	 */
 	public boolean login() {
@@ -54,43 +68,31 @@ public class LoginService {
 		}
 	}
 	
-	/**
-	 * @return Logged account.
-	 */
-	public AccountEntity getLoggedAccount() {
-		return loggedAccount;
-	}
-	
-	/**
-	 * @return Status of current login.
-	 */
-	public LoginStatus getStatus() {
-		return status;
-	}
-	
 	private void insertLoginTryToDatabase(LoginStatus status) {
 		LoginEntity currentLogin = generateCurrentLoginEntity(status);
 		loginDao.create(currentLogin);
 	}
 	
 	/**
-	 * @param status Status (ex. status of current login)
+	 * @param status Current LoginStatus
 	 * @return Generated LoginEntity of current login ready to insert to database.
 	 */
 	private LoginEntity generateCurrentLoginEntity(LoginStatus status) {
 		if (status == LoginStatus.PENDING) throw new IllegalArgumentException();
 		LoginEntity currentLogin = new LoginEntity();
-		if (status == LoginStatus.SUCCESS)
-			currentLogin.setIdAccount(accountNumber);
-		else
-			currentLogin.setIdAccount(null);
+		currentLogin.setIdAccount(setCurrentLoginEntityIdAccount(status));
 		currentLogin.setIp(IpGetter.getIp());
 		currentLogin.setDate(new Date());
-		if (status == LoginStatus.SUCCESS)
-			currentLogin.setSuccess(true);
-		else
-			currentLogin.setSuccess(false);
+		currentLogin.setSuccess(setCurrentLoginEntitySuccess(status));
 		return currentLogin;
+	}
+	
+	private Integer setCurrentLoginEntityIdAccount(LoginStatus status) {
+		return status == LoginStatus.SUCCESS ? accountNumber : null;
+	}
+	
+	private boolean setCurrentLoginEntitySuccess(LoginStatus status) {
+		return status == LoginStatus.SUCCESS ? true : false;
 	}
 	
 }
