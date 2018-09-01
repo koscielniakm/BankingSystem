@@ -45,4 +45,13 @@ public class NewsDao extends AbstractDao<NewsEntity> implements Dao<NewsEntity> 
 		return list;
 	}
 	
+	public List<NewsEntity> getLast(Integer number) {
+		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		List<NewsEntity> list = entityManager
+			.createQuery("FROM NewsEntity n ORDER BY n.date DESC", NewsEntity.class)
+			.setMaxResults(number)
+			.getResultList();
+		return list;
+	}
+	
 }
