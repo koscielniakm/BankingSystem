@@ -5,12 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,8 +23,8 @@ public class LoginEntity implements DbEntity, Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "id_account", nullable = true)
-	private Integer idAccount;
+	@Column(name = "AccountNumber")
+	private Integer accountNumber;
 
 	@Column(name = "ip")
 	private String ip;
@@ -38,10 +35,6 @@ public class LoginEntity implements DbEntity, Serializable {
 
 	@Column(name = "success", columnDefinition="BIT(1)")
 	private boolean success;
-	
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = AccountEntity.class)
-	@JoinColumn(name = "id_account", insertable = false, updatable = false, nullable = true)
-	private AccountEntity account;
 
 	public LoginEntity() { }
 
@@ -49,8 +42,8 @@ public class LoginEntity implements DbEntity, Serializable {
 		return id;
 	}
 
-	public Integer getIdAccount() {
-		return idAccount;
+	public Integer getAccountNumber() {
+		return accountNumber;
 	}
 
 	public String getIp() {
@@ -65,16 +58,12 @@ public class LoginEntity implements DbEntity, Serializable {
 		return success;
 	}
 
-	public AccountEntity getAccount() {
-		return account;
-	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public void setIdAccount(Integer idAccount) {
-		this.idAccount = idAccount;
+	public void setAccountNumber(Integer accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 	public void setIp(String ip) {
@@ -87,10 +76,6 @@ public class LoginEntity implements DbEntity, Serializable {
 
 	public void setSuccess(Boolean success) {
 		this.success = success;
-	}
-
-	public void setAccount(AccountEntity account) {
-		this.account = account;
 	}
 
 }

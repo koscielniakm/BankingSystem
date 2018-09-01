@@ -49,9 +49,6 @@ public class AccountEntity implements DbEntity, Serializable {
     @PrimaryKeyJoinColumn
 	private PersonEntity person;
     
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<LoginEntity> loginList;
-    
 	public AccountEntity() { }
 
 	public Integer getId() {
@@ -82,10 +79,6 @@ public class AccountEntity implements DbEntity, Serializable {
 		return person;
 	}
 
-	public List<LoginEntity> getLoginList() {
-		return loginList;
-	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -112,10 +105,6 @@ public class AccountEntity implements DbEntity, Serializable {
 
 	public void setPerson(PersonEntity person) {
 		this.person = person;
-	}
-
-	public void setLoginList(List<LoginEntity> loginList) {
-		this.loginList = loginList;
 	}
 
 }
