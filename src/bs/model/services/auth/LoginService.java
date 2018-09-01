@@ -11,6 +11,7 @@ import bs.model.services.security.PasswordHasher;
 
 /**
  * Class used to login user into application. 
+ * @author Mateusz
  */
 public class LoginService {
 	

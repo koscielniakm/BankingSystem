@@ -11,7 +11,6 @@ import bs.model.services.security.PasswordHasher;
 /**
  * Service used to register new account. 
  * @author Mateusz
- *
  */
 public class RegisterService {
 
