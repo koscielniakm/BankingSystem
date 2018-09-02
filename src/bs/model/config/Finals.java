@@ -2,6 +2,7 @@ package bs.model.config;
 
 public class Finals {
 	
+	// Persistence
 	public static final String PERSISTENCE_UNIT_NAME = "BankingSystemPersistence";
 	
 	// Database

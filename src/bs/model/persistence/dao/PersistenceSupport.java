@@ -6,6 +6,11 @@ import javax.persistence.Persistence;
 
 import bs.model.config.Finals;
 
+/**
+ * Support for persistence classes.
+ * Generates JPA / Hibernate objects in easy way.
+ * @author Mateusz
+ */
 public class PersistenceSupport implements AutoCloseable {
 	
 	private EntityManagerFactory entityManagerFactory;
