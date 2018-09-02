@@ -13,7 +13,6 @@ public class TokenBuilder {
 		return Jwts.builder()
 			.setIssuer(accountNumber.toString())
 			.setSubject("Subject")
-			// .claim("", "")
 			.setIssuedAt(Date.from(Instant.ofEpochSecond(new Date().getTime())))
 			.setExpiration(Date.from(Instant.ofEpochSecond(new Date().getTime())))
 			.signWith(
@@ -21,10 +20,6 @@ public class TokenBuilder {
 				TextCodec.BASE64.decode("Yn2kjibddFAWtnPJ2AFlL8WXmohJMCvigQggaEypa5E=")
 			)
 			.compact();
-	}
-	
-	public static void main(String[] args) {
-		
 	}
 	
 }

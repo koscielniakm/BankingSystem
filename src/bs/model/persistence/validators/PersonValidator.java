@@ -4,7 +4,6 @@ import bs.model.persistence.entities.PersonEntity;
 
 public class PersonValidator implements DaoValidator<PersonEntity> {
 
-	@Override
 	public boolean validateBeforeCreate(PersonEntity person) {
 		if (person == null) return false;
 		if (validateFirstName(person.getFirstName()) &&
@@ -13,7 +12,6 @@ public class PersonValidator implements DaoValidator<PersonEntity> {
 		return false;
 	}
 
-	@Override
 	public boolean validateBeforeUpdate(PersonEntity person) {
 		if (person == null) return false;
 		if (person.getId() > 0 &&
@@ -23,7 +21,6 @@ public class PersonValidator implements DaoValidator<PersonEntity> {
 		return false;
 	}
 
-	@Override
 	public boolean validateBeforeDelete(Integer id) {
 		if (id >= 0) return true;
 		return false;

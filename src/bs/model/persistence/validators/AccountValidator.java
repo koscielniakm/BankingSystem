@@ -17,7 +17,6 @@ public class AccountValidator implements DaoValidator<AccountEntity> {
 		else return false;
 	}
 
-	@Override
 	public boolean validateBeforeUpdate(AccountEntity account) {
 		if (account == null) return false;
 		if (account.getId() > 0 &&
@@ -28,7 +27,6 @@ public class AccountValidator implements DaoValidator<AccountEntity> {
 		else return false;
 	}
 
-	@Override
 	public boolean validateBeforeDelete(Integer id) {
 		if (id > 0) return true;
 		return false;
