@@ -1,5 +1,8 @@
 package bs.model.persistence.validators;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import bs.model.config.Finals;
 import bs.model.persistence.entities.AccountEntity;
 
@@ -52,8 +55,9 @@ public class AccountValidator implements DaoValidator<AccountEntity> {
 	private boolean validateEmail(String email) {
 		if (email == null || email.length() > Finals.DB_ACCOUNT_EMAIL_LENGTH)
 			return false;
-		// TODO regex
-		return true;
+		Pattern emailRegex = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+		Matcher matcher = emailRegex.matcher(email);
+		return matcher.find();
 	}
 	
 }
