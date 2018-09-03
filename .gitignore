@@ -1,3 +1,4 @@
 /doc/
 /build/
 WebContent/WEB-INF/lib
+/app-config.xml

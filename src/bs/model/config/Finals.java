@@ -5,6 +5,9 @@ public class Finals {
 	// Persistence
 	public static final String PERSISTENCE_UNIT_NAME = "BankingSystemPersistence";
 	
+	// Web config
+	public static final String JWT_SECRET_PATH = "app-config.xml";
+	
 	// Database
 	public static final int DB_ACCOUNT_ACCOUNTNUMBER_LENGTH = 9;
 	public static final int DB_ACCOUNT_ACCOUNTNUMBER_MIN_VALUE = 100000000;
