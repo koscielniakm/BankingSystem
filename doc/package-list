@@ -1,1 +1,10 @@
+bs.controller.api
+bs.controller.filters
+bs.model.config
+bs.model.persistence.dao
+bs.model.persistence.entities
+bs.model.persistence.validators
 bs.model.services.auth
+bs.model.services.misc
+bs.model.services.register
+bs.model.services.security
