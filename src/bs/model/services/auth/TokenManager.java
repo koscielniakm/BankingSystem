@@ -1,4 +1,4 @@
-package bs.model.services.security;
+package bs.model.services.auth;
 
 
 import java.security.Key;
