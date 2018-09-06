@@ -49,9 +49,29 @@ public class AccountValidator extends AbstractValidator implements DaoValidator<
 	 * @param account AccountEntity.
 	 * @return List of validations result.
 	 */
-	public boolean validateBeforeUpdate(AccountEntity entity) {
-		// TODO AccountValidator : validateBeforeUpdate(AccountEntity) impl.
-		throw new NotImplementedException();
+	public boolean validateBeforeUpdate(AccountEntity account) {
+		for (Boolean validation : getValidationsBeforeUpdate(account))
+			if (!validation) return false;
+		return true;
+	}
+	
+	/**
+	 * Execute needed validation before database update and return results.
+	 * @param account AccountEntity.
+	 * @return List of validations result.
+	 */
+	private List<Boolean> getValidationsBeforeUpdate(AccountEntity account) {
+		List<Boolean> validationList = new ArrayList<>();
+		validationList.add(validateNotNull(account.getId()));
+		validationList.add(validateNotNull(account.getAccountNumber()));
+		validationList.add(validateNotNull(account.getEmail()));
+		validationList.add(validateNotNull(account.getOpenDate()));
+		validationList.add(validateId(account.getId()));
+		validationList.add(validateAccountNumberLength(account.getAccountNumber()));
+		validationList.add(validateAccountNumberValue(account.getAccountNumber()));
+		validationList.add(validateEmailLength(account.getEmail()));
+		validationList.add(validateEmailSyntax(account.getEmail()));
+		return validationList;
 	}
 	
 	/**
@@ -60,8 +80,7 @@ public class AccountValidator extends AbstractValidator implements DaoValidator<
 	 * @return Validation result.
 	 */
 	public boolean validateBeforeDelete(Integer id) {
-		// TODO AccountValidator : validateBeforeDelete(AccountEntity) impl.
-		throw new NotImplementedException();
+		return validateId(id);
 	}
 	
 	/**
