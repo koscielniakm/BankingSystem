@@ -6,4 +6,8 @@ public abstract class AbstractValidator {
 		return object == null ? false : true;
 	}
 	
+	protected static boolean validateId(Integer id) {
+		return id == null || id < 0 ? false : true;
+	}
+	
 }
