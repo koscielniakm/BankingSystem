@@ -18,6 +18,8 @@ public class Finals {
 	
 	public static final int DB_LOGIN_IP_LENGTH = 16;
 	
+	public static final int DB_NEWS_TITLE_MAX_LENGTH = 50;
+	
 	// Application
 	public static final int ACCOUNT_PASSWORD_MIN_LENGTH = 8;
 	
