@@ -7,6 +7,7 @@ import java.util.Date;
 
 import javax.crypto.spec.SecretKeySpec;
 
+import bs.model.config.Finals;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -20,11 +21,13 @@ public final class TokenManager {
 	private static final Key TOKEN_KEY = new SecretKeySpec(TOKEN_SECRET, SIGNATURE_ALGORITHM.getJcaName());
 
 	public static String build(Integer accountNumber) {
+		Date dateNow = new Date();
+		Date expirationDate = new Date(dateNow.getTime() + Finals.JWT_EXPIRANTION_MILIS);
 		return Jwts.builder()
 			.setIssuer(accountNumber.toString())
 			.setSubject("Subject")
-			.setIssuedAt(Date.from(Instant.ofEpochSecond(new Date().getTime())))
-			.setExpiration(Date.from(Instant.ofEpochSecond(new Date().getTime())))
+			.setIssuedAt(Date.from(Instant.ofEpochSecond(dateNow.getTime())))
+			.setExpiration(Date.from(Instant.ofEpochSecond(expirationDate.getTime())))
 			.signWith(SIGNATURE_ALGORITHM, TOKEN_KEY)
 			.compact();
 	}

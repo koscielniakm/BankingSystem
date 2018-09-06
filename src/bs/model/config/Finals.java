@@ -7,6 +7,7 @@ public class Finals {
 	
 	// Web config
 	public static final String JWT_SECRET_PATH = "app-config.xml";
+	public static final Long JWT_EXPIRANTION_MILIS = 86400000L; // 1 day
 	
 	// Database
 	public static final int DB_ACCOUNT_ACCOUNTNUMBER_LENGTH = 9;
