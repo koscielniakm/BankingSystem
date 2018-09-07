@@ -1,23 +1,40 @@
 package bs.model.persistence.validators;
 
-import bs.model.persistence.entities.LoginEntity;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class LoginValidator implements DaoValidator<LoginEntity> {
+import bs.model.persistence.entities.LoginEntity;
+
+public class LoginValidator extends AbstractValidator implements DaoValidator<LoginEntity> {
 
 	@Override
-	public boolean validateBeforeCreate(LoginEntity obj) {
-		throw new NotImplementedException();
+	public boolean validateBeforeCreate(LoginEntity entity) {
+		return getValidationResult(getValidationsBeforeCreate(entity));
+	}
+	
+	private List<Boolean> getValidationsBeforeCreate(LoginEntity entity) {
+		List<Boolean> validationList = new ArrayList<>();
+		validationList.add(validateNotNull(entity.getDate()));
+		validationList.add(validateNotNull(entity.getIp()));
+		return validationList;
 	}
 
 	@Override
-	public boolean validateBeforeUpdate(LoginEntity obj) {
-		throw new NotImplementedException();
+	public boolean validateBeforeUpdate(LoginEntity entity) {
+		return getValidationResult(getValidationsBeforeUpdate(entity));
+	}
+	
+	private List<Boolean> getValidationsBeforeUpdate(LoginEntity entity) {
+		List<Boolean> validationList = new ArrayList<>();
+		validationList.add(validateNotNull(entity.getId()));
+		validationList.add(validateNotNull(entity.getDate()));
+		validationList.add(validateNotNull(entity.getIp()));
+		return validationList;
 	}
 
 	@Override
 	public boolean validateBeforeDelete(Integer id) {
-		throw new NotImplementedException();
+		return validateId(id);
 	}
 	
 }
