@@ -23,8 +23,8 @@ public class LoginEntity implements DbEntity, Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "AccountNumber")
-	private Integer accountNumber;
+	@Column(name = "Input")
+	private String input;
 
 	@Column(name = "ip")
 	private String ip;
@@ -42,8 +42,8 @@ public class LoginEntity implements DbEntity, Serializable {
 		return id;
 	}
 
-	public Integer getAccountNumber() {
-		return accountNumber;
+	public String getInput() {
+		return input;
 	}
 
 	public String getIp() {
@@ -54,7 +54,7 @@ public class LoginEntity implements DbEntity, Serializable {
 		return date;
 	}
 
-	public Boolean isSuccess() {
+	public boolean isSuccess() {
 		return success;
 	}
 
@@ -62,8 +62,8 @@ public class LoginEntity implements DbEntity, Serializable {
 		this.id = id;
 	}
 
-	public void setAccountNumber(Integer accountNumber) {
-		this.accountNumber = accountNumber;
+	public void setInput(String input) {
+		this.input = input;
 	}
 
 	public void setIp(String ip) {
@@ -74,7 +74,7 @@ public class LoginEntity implements DbEntity, Serializable {
 		this.date = date;
 	}
 
-	public void setSuccess(Boolean success) {
+	public void setSuccess(boolean success) {
 		this.success = success;
 	}
 
