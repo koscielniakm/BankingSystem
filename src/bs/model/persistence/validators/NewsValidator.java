@@ -11,9 +11,7 @@ public class NewsValidator extends AbstractValidator implements DaoValidator<New
 
 	@Override
 	public boolean validateBeforeCreate(NewsEntity entity) {
-		for (Boolean validation : getValidationsBeforeCreate(entity))
-			if (!validation) return false;
-		return true;
+		return getValidationResult(getValidationsBeforeCreate(entity));
 	}
 	
 	private List<Boolean> getValidationsBeforeCreate(NewsEntity entity) {

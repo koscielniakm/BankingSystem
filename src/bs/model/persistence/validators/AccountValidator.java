@@ -21,9 +21,7 @@ public class AccountValidator extends AbstractValidator implements DaoValidator<
 	 */
 	@Override
 	public boolean validateBeforeCreate(AccountEntity account) {
-		for (Boolean validation : getValidationsBeforeCreate(account))
-			if (!validation) return false;
-		return true;
+		return getValidationResult(getValidationsBeforeCreate(account));
 	}
 	
 	/**
@@ -51,9 +49,7 @@ public class AccountValidator extends AbstractValidator implements DaoValidator<
 	 */
 	@Override
 	public boolean validateBeforeUpdate(AccountEntity account) {
-		for (Boolean validation : getValidationsBeforeUpdate(account))
-			if (!validation) return false;
-		return true;
+		return getValidationResult(getValidationsBeforeUpdate(account));
 	}
 	
 	/**

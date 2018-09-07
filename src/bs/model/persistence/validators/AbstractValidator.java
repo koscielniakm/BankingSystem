@@ -1,5 +1,7 @@
 package bs.model.persistence.validators;
 
+import java.util.List;
+
 /**
  * Superclass for DAO validators.
  * @author Mateusz
@@ -22,6 +24,17 @@ public abstract class AbstractValidator {
 	 */
 	protected static boolean validateId(Integer id) {
 		return id == null || id < 0 ? false : true;
+	}
+	
+	/**
+	 * Generate result from validation list.
+	 * @param list List of executed validations.
+	 * @return Result of list validation.
+	 */
+	protected static boolean getValidationResult(List<Boolean> list) {
+		for (Boolean b : list)
+			if (!b) return false;
+		return true;
 	}
 	
 }
