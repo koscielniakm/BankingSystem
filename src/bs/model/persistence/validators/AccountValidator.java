@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 
 import bs.model.config.Finals;
 import bs.model.persistence.entities.AccountEntity;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Validator for AccountEntity class.
@@ -20,6 +19,7 @@ public class AccountValidator extends AbstractValidator implements DaoValidator<
 	 * @param account AccountEntity.
 	 * @return Result of validation process.
 	 */
+	@Override
 	public boolean validateBeforeCreate(AccountEntity account) {
 		for (Boolean validation : getValidationsBeforeCreate(account))
 			if (!validation) return false;
@@ -49,6 +49,7 @@ public class AccountValidator extends AbstractValidator implements DaoValidator<
 	 * @param account AccountEntity.
 	 * @return List of validations result.
 	 */
+	@Override
 	public boolean validateBeforeUpdate(AccountEntity account) {
 		for (Boolean validation : getValidationsBeforeUpdate(account))
 			if (!validation) return false;
@@ -79,6 +80,7 @@ public class AccountValidator extends AbstractValidator implements DaoValidator<
 	 * @param id Id of AccountEntity.
 	 * @return Validation result.
 	 */
+	@Override
 	public boolean validateBeforeDelete(Integer id) {
 		return validateId(id);
 	}
