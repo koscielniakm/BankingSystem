@@ -3,7 +3,7 @@ package bs.model.services.security;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class ShaHasher {
+class ShaHasher {
 
     public static String hashSha256(String password) throws NoSuchAlgorithmException {
     	MessageDigest md = MessageDigest.getInstance("SHA-256");

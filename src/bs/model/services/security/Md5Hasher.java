@@ -3,7 +3,7 @@ package bs.model.services.security;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Md5Hasher {
+class Md5Hasher {
 
 	public static String hashMD5(String text) throws NoSuchAlgorithmException {
 		MessageDigest digest = MessageDigest.getInstance("MD5");
