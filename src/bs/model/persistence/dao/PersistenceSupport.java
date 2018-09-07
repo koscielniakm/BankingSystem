@@ -11,7 +11,7 @@ import bs.model.config.Finals;
  * Generates JPA / Hibernate objects in easy way.
  * @author Mateusz
  */
-public class PersistenceSupport implements AutoCloseable {
+class PersistenceSupport implements AutoCloseable {
 	
 	private EntityManagerFactory entityManagerFactory;
 	
@@ -22,11 +22,17 @@ public class PersistenceSupport implements AutoCloseable {
 		entityManager = entityManagerFactory.createEntityManager();
 	}
 	
-	/* Should be closed by method closeEntityManager() */
+	/**
+	 * Generate EntityManager from project persistence unit configuration.
+	 * @return EntityManager object.
+	 */
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}
 	
+	/**
+	 * Should be invoked after EnityManager use !
+	 */
 	public void closeEntityManager() {
 		entityManager.close();
 		entityManagerFactory.close();
