@@ -6,7 +6,7 @@ import javax.persistence.NoResultException;
 
 import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.entities.AccountEntity;
-import bs.model.services.security.PasswordHasher;
+import bs.model.services.security.Hasher;
 
 /**
  * Service used to register new account. 
@@ -50,7 +50,7 @@ public class RegisterService {
 		AccountEntity generatedAccount = new AccountEntity();
 		generatedAccount.setIdPerson(null);
 		generatedAccount.setAccountNumber(numberGenerator.generateAccountNumber(accountDao));
-		generatedAccount.setPassword(PasswordHasher.hashPassword(password));
+		generatedAccount.setPassword(Hasher.hashMd5(password));
 		generatedAccount.setEmail(email);
 		generatedAccount.setOpenDate(new Date());
 		return generatedAccount;

@@ -6,8 +6,8 @@ import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.dao.LoginDao;
 import bs.model.persistence.entities.AccountEntity;
 import bs.model.persistence.entities.LoginEntity;
+import bs.model.services.security.Hasher;
 import bs.model.services.security.IpGetter;
-import bs.model.services.security.PasswordHasher;
 
 /**
  * Class used to login user into application. 
@@ -33,7 +33,7 @@ public class LoginService {
 	 */
 	public LoginService(int accountNumber, String password) {
 		this.accountNumber = accountNumber;
-		this.password = PasswordHasher.hashPassword(password);
+		this.password = Hasher.hashMd5(password);
 		this.accountDao = new AccountDao();
 		this.loginDao = new LoginDao();
 		this.status = LoginStatus.PENDING;
