@@ -25,14 +25,23 @@ public class NewsValidator extends AbstractValidator implements DaoValidator<New
 
 	@Override
 	public boolean validateBeforeUpdate(NewsEntity entity) {
-		// TODO Auto-generated method stub
-		throw new NotImplementedException();
+		return getValidationResult(getValidationsBeforeUpdate(entity));
+	}
+	
+	private List<Boolean> getValidationsBeforeUpdate(NewsEntity entity) {
+		List<Boolean> validationList = new ArrayList<>();
+		validationList.add(validateNotNull(entity.getId()));
+		validationList.add(validateNotNull(entity.getTitle()));
+		validationList.add(validateNotNull(entity.getContent()));
+		validationList.add(validateNotNull(entity.getDate()));
+		validationList.add(validateId(entity.getId()));
+		validationList.add(validateTitleLength(entity.getTitle()));
+		return validationList;
 	}
 
 	@Override
 	public boolean validateBeforeDelete(Integer id) {
-		// TODO Auto-generated method stub
-		throw new NotImplementedException();
+		return validateId(id);
 	}
 	
 	private boolean validateTitleLength(String title) {
