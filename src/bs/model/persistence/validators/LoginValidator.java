@@ -14,6 +14,7 @@ public class LoginValidator extends AbstractValidator implements DaoValidator<Lo
 	
 	private List<Boolean> getValidationsBeforeCreate(LoginEntity entity) {
 		List<Boolean> validationList = new ArrayList<>();
+		validationList.add(validateNotNull(entity.getInput()));
 		validationList.add(validateNotNull(entity.getDate()));
 		validationList.add(validateNotNull(entity.getIp()));
 		return validationList;
@@ -27,6 +28,7 @@ public class LoginValidator extends AbstractValidator implements DaoValidator<Lo
 	private List<Boolean> getValidationsBeforeUpdate(LoginEntity entity) {
 		List<Boolean> validationList = new ArrayList<>();
 		validationList.add(validateNotNull(entity.getId()));
+		validationList.add(validateNotNull(entity.getInput()));
 		validationList.add(validateNotNull(entity.getDate()));
 		validationList.add(validateNotNull(entity.getIp()));
 		return validationList;

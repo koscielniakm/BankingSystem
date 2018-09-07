@@ -53,7 +53,7 @@ public class AccountDao extends AbstractDao<AccountEntity> implements Dao<Accoun
 		return allAccounts;
 	}
 	
-	public AccountEntity login(int accountNumber, String password) {
+	public AccountEntity login(String accountNumber, String password) {
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
 		Query query =  entityManager
 			.createQuery("FROM AccountEntity a WHERE a.accountNumber = :accountNumber AND a.password = :password")

@@ -16,9 +16,9 @@ public class LoginApi {
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response login(JsonObject incomingData) {
-		Integer incomingAccountNumber = incomingData.getInt("AccountNumber");
+		String incomingInput = incomingData.getString("Input");
 		String incomingPassword = incomingData.getString("Password");
-		LoginService loginService = new LoginService(incomingAccountNumber, incomingPassword);
+		LoginService loginService = new LoginService(incomingInput, incomingPassword);
 		boolean status = loginService.login();
 		if (status) return Response.ok().build();
 		else return Response.status(400).build();	

@@ -15,7 +15,7 @@ import bs.model.services.security.IpGetter;
  */
 public class LoginService {
 	
-	private Integer accountNumber;
+	private String input;
 	
 	private String password;
 	
@@ -31,8 +31,8 @@ public class LoginService {
 	 * @param accountNumber Number of account which user want to log in.
 	 * @param password Password (not hashed) entered by user.
 	 */
-	public LoginService(int accountNumber, String password) {
-		this.accountNumber = accountNumber;
+	public LoginService(String input, String password) {
+		this.input = input;
 		this.password = Hasher.hashPassword(password);
 		this.accountDao = new AccountDao();
 		this.loginDao = new LoginDao();
@@ -57,7 +57,7 @@ public class LoginService {
 	 * @return Result of login try.
 	 */
 	public boolean login() {
-		loggedAccount = accountDao.login(accountNumber, password);
+		loggedAccount = accountDao.login(input, password);
 		if (loggedAccount != null) {
 			status = LoginStatus.SUCCESS;
 			insertLoginTryToDatabase(status);
@@ -81,15 +81,15 @@ public class LoginService {
 	private LoginEntity generateCurrentLoginEntity(LoginStatus status) {
 		if (status == LoginStatus.PENDING) throw new IllegalArgumentException();
 		LoginEntity currentLogin = new LoginEntity();
-		currentLogin.setAccountNumber(setCurrentLoginEntityIdAccount(status));
+		currentLogin.setInput(setCurrentLoginEntityInput(status));
 		currentLogin.setIp(IpGetter.getIp());
 		currentLogin.setDate(new Date());
 		currentLogin.setSuccess(setCurrentLoginEntitySuccess(status));
 		return currentLogin;
 	}
 	
-	private Integer setCurrentLoginEntityIdAccount(LoginStatus status) {
-		return status == LoginStatus.SUCCESS ? accountNumber : null;
+	private String setCurrentLoginEntityInput(LoginStatus status) {
+		return status == LoginStatus.SUCCESS ? input : null;
 	}
 	
 	private boolean setCurrentLoginEntitySuccess(LoginStatus status) {
