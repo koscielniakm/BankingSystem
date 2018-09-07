@@ -5,7 +5,6 @@ import java.util.List;
 
 import bs.model.config.Finals;
 import bs.model.persistence.entities.NewsEntity;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class NewsValidator extends AbstractValidator implements DaoValidator<NewsEntity>{
 

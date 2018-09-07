@@ -33,7 +33,7 @@ public class LoginService {
 	 */
 	public LoginService(int accountNumber, String password) {
 		this.accountNumber = accountNumber;
-		this.password = Hasher.hashMd5(password);
+		this.password = Hasher.hashPassword(password);
 		this.accountDao = new AccountDao();
 		this.loginDao = new LoginDao();
 		this.status = LoginStatus.PENDING;

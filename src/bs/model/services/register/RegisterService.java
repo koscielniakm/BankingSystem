@@ -50,7 +50,7 @@ public class RegisterService {
 		AccountEntity generatedAccount = new AccountEntity();
 		generatedAccount.setIdPerson(null);
 		generatedAccount.setAccountNumber(numberGenerator.generateAccountNumber(accountDao));
-		generatedAccount.setPassword(Hasher.hashMd5(password));
+		generatedAccount.setPassword(Hasher.hashPassword(password));
 		generatedAccount.setEmail(email);
 		generatedAccount.setOpenDate(new Date());
 		return generatedAccount;

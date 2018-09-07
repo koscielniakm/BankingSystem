@@ -43,4 +43,13 @@ public class Hasher {
 		return value;
 	}
 	
+	/**
+	 * Generate hash for password.
+	 * @param password Database password.
+	 * @return Password hashed by implemented algorithm.
+	 */
+	public static String hashPassword(String password) {
+		return hashSha256(password); // All database passwords should be hashed by SHA-256.
+	}
+	
 }
