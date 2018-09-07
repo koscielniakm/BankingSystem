@@ -20,6 +20,9 @@ public class Finals {
 	
 	public static final int DB_NEWS_TITLE_MAX_LENGTH = 50;
 	
+	public static final int DB_PERSON_FIRSTNAME_MAX_LENGTH = 30;
+	public static final int DB_PERSON_LASTNAME_MAX_LENGTH = 30;
+	
 	// Application
 	public static final int ACCOUNT_PASSWORD_MIN_LENGTH = 8;
 	
