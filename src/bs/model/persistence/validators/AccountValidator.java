@@ -35,10 +35,14 @@ public class AccountValidator extends AbstractValidator implements DaoValidator<
 		validationList.add(validateNotNull(account.getPassword()));
 		validationList.add(validateNotNull(account.getEmail()));
 		validationList.add(validateNotNull(account.getOpenDate()));
+		validationList.add(validateNotNull(account.getOwnerFirstName()));
+		validationList.add(validateNotNull(account.getOwnerLastName()));
 		validationList.add(validateAccountNumberLength(account.getAccountNumber()));
 		validationList.add(validateAccountNumberValue(account.getAccountNumber()));
 		validationList.add(validateEmailLength(account.getEmail()));
 		validationList.add(validateEmailSyntax(account.getEmail()));
+		validationList.add(validateOwnerFirstNameLength(account.getOwnerFirstName()));
+		validationList.add(validateOwnerLastNameLength(account.getOwnerLastName()));
 		return validationList;
 	}
 	
@@ -63,11 +67,15 @@ public class AccountValidator extends AbstractValidator implements DaoValidator<
 		validationList.add(validateNotNull(account.getAccountNumber()));
 		validationList.add(validateNotNull(account.getEmail()));
 		validationList.add(validateNotNull(account.getOpenDate()));
+		validationList.add(validateNotNull(account.getOwnerFirstName()));
+		validationList.add(validateNotNull(account.getOwnerLastName()));
 		validationList.add(validateId(account.getId()));
 		validationList.add(validateAccountNumberLength(account.getAccountNumber()));
 		validationList.add(validateAccountNumberValue(account.getAccountNumber()));
 		validationList.add(validateEmailLength(account.getEmail()));
 		validationList.add(validateEmailSyntax(account.getEmail()));
+		validationList.add(validateOwnerFirstNameLength(account.getOwnerFirstName()));
+		validationList.add(validateOwnerLastNameLength(account.getOwnerLastName()));
 		return validationList;
 	}
 	
@@ -121,6 +129,26 @@ public class AccountValidator extends AbstractValidator implements DaoValidator<
 		Pattern emailRegex = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = emailRegex.matcher(email);
 		return matcher.find();
+	}
+	
+	/**
+	 * Check owner first name length.
+	 * @param firstName First name of account owner.
+	 * @return Validation result.
+	 */
+	private boolean validateOwnerFirstNameLength(String firstName) {
+		Integer maxLength = Finals.DB_ACCOUNT_FIRSTNAME_MAX_LENGTH;
+		return firstName.length() > maxLength ? false : true;
+	}
+	
+	/**
+	 * Check owner last name length.
+	 * @param lastName Last name of account owner.
+	 * @return Validation result.
+	 */
+	private boolean validateOwnerLastNameLength(String lastName) {
+		Integer maxLength = Finals.DB_ACCOUNT_LASTNAME_MAX_LENGTH;
+		return lastName.length() > maxLength ? false : true;
 	}
 	
 }

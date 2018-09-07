@@ -15,6 +15,8 @@ public class Finals {
 	public static final int DB_ACCOUNT_ACCOUNTNUMBER_MAX_VALUE = 999999999;
 	public static final int DB_ACCOUNT_PASSWORD_MAX_LENGTH = 64;
 	public static final int DB_ACCOUNT_EMAIL_LENGTH = 50;
+	public static final int DB_ACCOUNT_FIRSTNAME_MAX_LENGTH = 30;
+	public static final int DB_ACCOUNT_LASTNAME_MAX_LENGTH = 30;
 	
 	public static final int DB_LOGIN_IP_LENGTH = 16;
 	
