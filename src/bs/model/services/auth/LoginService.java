@@ -2,6 +2,8 @@ package bs.model.services.auth;
 
 import java.util.Date;
 
+import javax.persistence.NoResultException;
+
 import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.dao.LoginDao;
 import bs.model.persistence.entities.AccountEntity;
@@ -42,7 +44,9 @@ public class LoginService {
 	/**
 	 * @return Logged account.
 	 */
-	public AccountEntity getLoggedAccount() {
+	public AccountEntity getLoggedAccount() throws NoResultException {
+		if (loggedAccount == null)
+			throw new NoResultException();
 		return loggedAccount;
 	}
 	
@@ -69,6 +73,10 @@ public class LoginService {
 		}
 	}
 	
+	/**
+	 * Register current login try in database.
+	 * @param status Status of current authorization process.
+	 */
 	private void insertLoginTryToDatabase(LoginStatus status) {
 		LoginEntity currentLogin = generateCurrentLoginEntity(status);
 		loginDao.create(currentLogin);
@@ -87,6 +95,7 @@ public class LoginService {
 		currentLogin.setSuccess(setCurrentLoginEntitySuccess(status));
 		return currentLogin;
 	}
+	
 	
 	private String setCurrentLoginEntityInput(LoginStatus status) {
 		return status == LoginStatus.SUCCESS ? input : null;

@@ -36,16 +36,35 @@ public class RegisterService {
 	 */
 	public boolean register(String password, String email) {
 		AccountEntity generatedAccount = generateAccount(password, email);
-		if (accountDao.create(generatedAccount)) {
-			registeredAccount = generatedAccount;
-			status = RegisterStatus.SUCCESS;
-			return true;
-		} else {
-			status = RegisterStatus.FAILED;
-			return false;
-		}
+		return accountDao.create(generatedAccount) ? doRegisterSuccess(generatedAccount) : doRegisterFailed();
 	}
 	
+	/**
+	 * Set register success.
+	 * @param account Generated account.
+	 * @return true Always true.
+	 */
+	private boolean doRegisterSuccess(AccountEntity account) {
+		registeredAccount = account;
+		status = RegisterStatus.SUCCESS;
+		return true;
+	}
+	
+	/**
+	 * Set register failed.
+	 * @return true Always false.
+	 */
+	private boolean doRegisterFailed() {
+		status = RegisterStatus.FAILED;
+		return false;
+	}
+	
+	/**
+	 * Generate new account data.
+	 * @param password Not hashed account password.
+	 * @param email Account email.
+	 * @return Generated account.
+	 */
 	private AccountEntity generateAccount(String password, String email) {
 		AccountEntity generatedAccount = new AccountEntity();
 		generatedAccount.setAccountNumber(numberGenerator.generateAccountNumber(accountDao));
@@ -55,11 +74,19 @@ public class RegisterService {
 		return generatedAccount;
 	}
 	
-	public AccountEntity getRegisteredAccount() {
+	/**
+	 * @throws NoResultException if registration failed.
+	 * @return Registered account.
+	 */
+	public AccountEntity getRegisteredAccount() throws NoResultException {
 		if (registeredAccount == null) throw new NoResultException();
 		else return registeredAccount;
 	}
 	
+	/**
+	 * Get status of current registration process.
+	 * @return Status of registration.
+	 */
 	public RegisterStatus getStatus() {
 		return status;
 	}

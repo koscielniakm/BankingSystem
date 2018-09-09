@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
 import bs.model.persistence.entities.NewsEntity;
 import bs.model.services.misc.NewsService;
 
-@Path("/news/")
+@Path("/news")
 public class NewsApi {
 
 	@GET
@@ -33,7 +33,7 @@ public class NewsApi {
 	}
 	
 	@GET
-	@Path("/last/")
+	@Path("/last")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getLast() {
 		List<NewsEntity> newsList = new NewsService().getLast(5);

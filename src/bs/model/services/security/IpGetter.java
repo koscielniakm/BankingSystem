@@ -8,11 +8,14 @@ import javax.persistence.NoResultException;
 public class IpGetter {
 	
 	public static String getIp() {
-		try {
+		try
+		{
 			InetAddress inetAddress = InetAddress.getLocalHost();
 			String ipAddress = inetAddress.getHostAddress().toString();
 			return ipAddress;
-		} catch (UnknownHostException e) {
+		}
+		catch (UnknownHostException e)
+		{
 			e.printStackTrace();
 			throw new NoResultException();
 		}
