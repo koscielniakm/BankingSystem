@@ -4,8 +4,8 @@ import java.util.Date;
 
 import javax.persistence.NoResultException;
 
-import bs.model.persistence.dao.AccountDao;
-import bs.model.persistence.dao.LoginDao;
+import bs.model.persistence.dao.AccountEntityDao;
+import bs.model.persistence.dao.LoginEntityDao;
 import bs.model.persistence.entities.AccountEntity;
 import bs.model.persistence.entities.LoginEntity;
 import bs.model.services.security.Hasher;
@@ -23,9 +23,9 @@ public class LoginService {
 	
 	private AccountEntity loggedAccount;
 	
-	private AccountDao accountDao;
+	private AccountEntityDao accountDao;
 	
-	private LoginDao loginDao;
+	private LoginEntityDao loginDao;
 	
 	private LoginStatus status;
 	
@@ -36,8 +36,8 @@ public class LoginService {
 	public LoginService(String input, String password) {
 		this.input = input;
 		this.password = Hasher.hashPassword(password);
-		this.accountDao = new AccountDao();
-		this.loginDao = new LoginDao();
+		this.accountDao = new AccountEntityDao();
+		this.loginDao = new LoginEntityDao();
 		this.status = LoginStatus.PENDING;
 	}
 	

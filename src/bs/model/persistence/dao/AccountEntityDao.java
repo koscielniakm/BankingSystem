@@ -9,11 +9,11 @@ import javax.persistence.Query;
 import bs.model.persistence.entities.AccountEntity;
 import bs.model.persistence.validators.AccountValidator;
 
-public class AccountDao extends AbstractDao<AccountEntity> implements Dao<AccountEntity> {
+public class AccountEntityDao extends AbstractEntityDao<AccountEntity> implements EntityDao<AccountEntity> {
 
 	private AccountValidator validator;
 	
-	public AccountDao() {
+	public AccountEntityDao() {
 		validator = new AccountValidator();
 	}
 	

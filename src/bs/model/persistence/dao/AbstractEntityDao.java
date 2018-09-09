@@ -11,11 +11,11 @@ import bs.model.persistence.entities.DbEntity;
  * @author Mateusz
  * @param <T> Type of entity which DAO class invoke.
  */
-public abstract class AbstractDao<T extends DbEntity> {
+public abstract class AbstractEntityDao<T extends DbEntity> {
 
 	private PersistenceSupport persistenceSupport;
 	
-	public AbstractDao() {
+	public AbstractEntityDao() {
 		persistenceSupport = new PersistenceSupport();
 	}
 	

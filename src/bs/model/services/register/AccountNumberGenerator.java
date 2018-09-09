@@ -3,7 +3,7 @@ package bs.model.services.register;
 import java.util.Random;
 
 import bs.model.config.Finals;
-import bs.model.persistence.dao.AccountDao;
+import bs.model.persistence.dao.AccountEntityDao;
 
 /**
  * Class used to generate number of new account before registration.
@@ -20,7 +20,7 @@ public class AccountNumberGenerator {
 	 * existence of random generated number in database.
 	 * @return Avaiable account number.
 	 */
-	public int generateAccountNumber(AccountDao dao) {
+	public int generateAccountNumber(AccountEntityDao dao) {
 		Random random = new Random();
 		int generatedNumber = 0;
 		do {

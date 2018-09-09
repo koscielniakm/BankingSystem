@@ -6,9 +6,9 @@ import javax.persistence.EntityManager;
 
 import bs.model.persistence.entities.NewsEntity;
 
-public class NewsDao extends AbstractDao<NewsEntity> implements Dao<NewsEntity> {
+public class NewsEntityDao extends AbstractEntityDao<NewsEntity> implements EntityDao<NewsEntity> {
 	
-	public NewsDao() {
+	public NewsEntityDao() {
 		// TODO impl validator
 	}
 	

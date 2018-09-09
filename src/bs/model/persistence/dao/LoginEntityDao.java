@@ -7,11 +7,11 @@ import javax.persistence.EntityManager;
 import bs.model.persistence.entities.LoginEntity;
 import bs.model.persistence.validators.LoginValidator;
 
-public class LoginDao extends AbstractDao<LoginEntity> implements Dao<LoginEntity> {
+public class LoginEntityDao extends AbstractEntityDao<LoginEntity> implements EntityDao<LoginEntity> {
 
 	private LoginValidator validator;
 	
-	public LoginDao() {
+	public LoginEntityDao() {
 		validator = new LoginValidator();
 	}
 	

@@ -7,11 +7,11 @@ import javax.persistence.EntityManager;
 import bs.model.persistence.entities.PersonEntity;
 import bs.model.persistence.validators.PersonValidator;
 
-public class PersonDao extends AbstractDao<PersonEntity> implements Dao<PersonEntity>{
+public class PersonEntityDao extends AbstractEntityDao<PersonEntity> implements EntityDao<PersonEntity>{
 	
 	private PersonValidator validator;
 	
-	public PersonDao() {
+	public PersonEntityDao() {
 		validator = new PersonValidator();
 	}
 	
