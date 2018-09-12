@@ -26,20 +26,20 @@ class PersistenceSupport implements AutoCloseable {
 	 * Generate EntityManager from project persistence unit configuration.
 	 * @return EntityManager object.
 	 */
-	public EntityManager getEntityManager() {
+	public synchronized EntityManager getEntityManager() {
 		return entityManager;
 	}
 	
 	/**
 	 * Should be invoked after EnityManager use !
 	 */
-	public void closeEntityManager() {
+	public synchronized void closeEntityManager() {
 		entityManager.close();
 		entityManagerFactory.close();
 	}
 
 	@Override
-	public void close()  {
+	public synchronized void close()  {
 		closeEntityManager();	
 	}
 	
