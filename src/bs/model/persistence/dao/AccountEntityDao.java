@@ -3,6 +3,8 @@ package bs.model.persistence.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
 import bs.model.persistence.entities.AccountEntity;
 import bs.model.persistence.validators.AccountValidator;
@@ -59,5 +61,28 @@ public class AccountEntityDao extends AbstractEntityDao<AccountEntity> implement
 			.getResultList();
 		return accounts;
 	}	
+	
+	// Login
+	public AccountEntity getByAccountNumberAndPassword(String accountNumber, String password) {
+		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		Query query =  entityManager
+			.createQuery("FROM AccountEntity a WHERE a.accountNumber = :accountNumber AND a.password = :password")
+			.setParameter("accountNumber", accountNumber)
+			.setParameter("password", password);
+		AccountEntity loggedAccount = new AccountEntity();
+		try
+		{
+			loggedAccount = (AccountEntity) query.getSingleResult();
+		}
+		catch (NoResultException e)
+		{
+			loggedAccount = null;
+		}
+		finally
+		{
+			getPersistenceSupport().closeEntityManager();
+		}
+		return loggedAccount;
+	}
 	
 }

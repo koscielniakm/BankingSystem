@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.persistence.NoResultException;
 
-import bs.model.persistence.dao.AuthDao;
+import bs.model.persistence.dao.AccountEntityDao;
 import bs.model.persistence.dao.LoginEntityDao;
 import bs.model.persistence.entities.AccountEntity;
 import bs.model.persistence.entities.LoginEntity;
@@ -23,7 +23,7 @@ public class LoginService {
 	
 	private AccountEntity loggedAccount;
 	
-	private AuthDao authDao;
+	private AccountEntityDao accountDao;
 	
 	private LoginEntityDao loginDao;
 	
@@ -36,7 +36,7 @@ public class LoginService {
 	public LoginService(String input, String password) {
 		this.input = input;
 		this.password = Hasher.hashPassword(password);
-		this.authDao = new AuthDao();
+		this.accountDao = new AccountEntityDao();
 		this.loginDao = new LoginEntityDao();
 		this.status = LoginStatus.PENDING;
 	}
@@ -61,7 +61,7 @@ public class LoginService {
 	 * @return Result of login try.
 	 */
 	public boolean login() {
-		loggedAccount = authDao.login(input, password);
+		loggedAccount = accountDao.getByAccountNumberAndPassword(input, password);
 		if (loggedAccount != null) {
 			status = LoginStatus.SUCCESS;
 			insertLoginTryToDatabase(status);
