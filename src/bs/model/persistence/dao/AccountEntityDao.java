@@ -64,10 +64,11 @@ public class AccountEntityDao extends AbstractEntityDao<AccountEntity> implement
 	
 	// Login
 	public AccountEntity getByAccountNumberAndPassword(String accountNumber, String password) {
+		Integer accountNumberInt = Integer.parseInt(accountNumber);
 		EntityManager entityManager = getPersistenceSupport().getEntityManager();
 		Query query =  entityManager
 			.createQuery("FROM AccountEntity a WHERE a.accountNumber = :accountNumber AND a.password = :password")
-			.setParameter("accountNumber", accountNumber)
+			.setParameter("accountNumber", accountNumberInt)
 			.setParameter("password", password);
 		AccountEntity loggedAccount = new AccountEntity();
 		try

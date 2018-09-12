@@ -11,7 +11,7 @@ import bs.model.services.auth.LoginService;
 
 @Path("/")
 public class LoginApi {
-
+	
 	@POST
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)
