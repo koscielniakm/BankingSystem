@@ -23,9 +23,8 @@ public class AccountNumberGenerator {
 	public int generateAccountNumber(AccountEntityDao dao) {
 		Random random = new Random();
 		int generatedNumber = 0;
-		do {
-			generatedNumber = random.nextInt(VALUE_MAX) + VALUE_MIN;
-		} while (dao.getByAccountNumber(generatedNumber).size() != 0);
+		do generatedNumber = random.nextInt(VALUE_MAX) + VALUE_MIN;
+		while (dao.getByAccountNumber(generatedNumber).size() != 0);
 		return generatedNumber;
 	}
 	

@@ -62,15 +62,27 @@ public class LoginService {
 	 */
 	public boolean login() {
 		loggedAccount = accountDao.getByAccountNumberAndPassword(input, password);
-		if (loggedAccount != null) {
-			status = LoginStatus.SUCCESS;
-			insertLoginTryToDatabase(status);
-			return true;
-		} else {
-			insertLoginTryToDatabase(status);
-			status = LoginStatus.FAILED;
-			return false;
-		}
+		return loggedAccount != null ? doLoginSuccess() : doLoginFailed();
+	}
+	
+	/**
+	 * Set login success.
+	 * @return Always true.
+	 */
+	private boolean doLoginSuccess() {
+		status = LoginStatus.SUCCESS;
+		insertLoginTryToDatabase(status);
+		return true;
+	}
+	
+	/**
+	 * Set login failed.
+	 * @return Always false.
+	 */
+	private boolean doLoginFailed() {
+		insertLoginTryToDatabase(status);
+		status = LoginStatus.FAILED;
+		return false;
 	}
 	
 	/**
