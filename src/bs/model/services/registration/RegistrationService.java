@@ -1,4 +1,4 @@
-package bs.model.services.register;
+package bs.model.services.registration;
 
 import java.util.Date;
 
@@ -12,7 +12,7 @@ import bs.model.services.security.Hasher;
  * Service used to register new account. 
  * @author Mateusz
  */
-public class RegisterService {
+public class RegistrationService {
 
 	private AccountEntityDao accountDao;
 	
@@ -20,12 +20,12 @@ public class RegisterService {
 	
 	private AccountEntity registeredAccount;
 	
-	private RegisterStatus status;
+	private RegistrationStatus status;
 	
-	public RegisterService() {
+	public RegistrationService() {
 		accountDao = new AccountEntityDao();
 		numberGenerator = new AccountNumberGenerator();
-		status = RegisterStatus.PENDING;
+		status = RegistrationStatus.PENDING;
 	}
 	
 	/**
@@ -40,22 +40,22 @@ public class RegisterService {
 	}
 	
 	/**
-	 * Set register success.
+	 * Set registration success.
 	 * @param account Generated account.
 	 * @return true Always true.
 	 */
 	private boolean doRegisterSuccess(AccountEntity account) {
 		registeredAccount = account;
-		status = RegisterStatus.SUCCESS;
+		status = RegistrationStatus.SUCCESS;
 		return true;
 	}
 	
 	/**
-	 * Set register failed.
+	 * Set registration failed.
 	 * @return true Always false.
 	 */
 	private boolean doRegisterFailed() {
-		status = RegisterStatus.FAILED;
+		status = RegistrationStatus.FAILED;
 		return false;
 	}
 	
@@ -87,7 +87,7 @@ public class RegisterService {
 	 * Get status of current registration process.
 	 * @return Status of registration.
 	 */
-	public RegisterStatus getStatus() {
+	public RegistrationStatus getStatus() {
 		return status;
 	}
 	

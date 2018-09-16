@@ -1,4 +1,4 @@
-package bs.model.services.register;
+package bs.model.services.registration;
 
 import java.util.Random;
 
