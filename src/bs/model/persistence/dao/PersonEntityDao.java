@@ -5,14 +5,14 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import bs.model.persistence.entities.PersonEntity;
-import bs.model.persistence.validators.PersonValidator;
+import bs.model.persistence.validators.PersonValidatorImpl;
 
 public class PersonEntityDao extends AbstractEntityDao<PersonEntity> implements EntityDao<PersonEntity>{
 	
-	private PersonValidator validator;
+	private PersonValidatorImpl validator;
 	
 	public PersonEntityDao() {
-		validator = new PersonValidator();
+		validator = new PersonValidatorImpl();
 	}
 	
 	@Override

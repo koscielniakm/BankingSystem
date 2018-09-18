@@ -6,7 +6,7 @@ import java.util.List;
 import bs.model.config.Finals;
 import bs.model.persistence.entities.PersonEntity;
 
-public class PersonValidator extends AbstractValidator implements DaoValidator<PersonEntity> {
+public class PersonValidatorImpl extends AbstractValidator implements DaoValidator<PersonEntity> {
 
 	@Override
 	public boolean validateBeforeCreate(PersonEntity person) {

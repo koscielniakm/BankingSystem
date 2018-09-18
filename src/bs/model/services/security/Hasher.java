@@ -21,7 +21,6 @@ public class Hasher {
 		catch (NoSuchAlgorithmException e)
 		{
 			e.printStackTrace();
-			return null;
 		}
 		return value;
 	}
@@ -38,7 +37,6 @@ public class Hasher {
 		catch (NoSuchAlgorithmException e)
 		{
 			e.printStackTrace();
-			return null;
 		}
 		return value;
 	}

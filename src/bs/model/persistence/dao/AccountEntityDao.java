@@ -7,14 +7,14 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import bs.model.persistence.entities.AccountEntity;
-import bs.model.persistence.validators.AccountValidator;
+import bs.model.persistence.validators.AccountValidatorImpl;
 
 public class AccountEntityDao extends AbstractEntityDao<AccountEntity> implements EntityDao<AccountEntity> {
 
-	private AccountValidator validator;
+	private AccountValidatorImpl validator;
 	
 	public AccountEntityDao() {
-		validator = new AccountValidator();
+		validator = new AccountValidatorImpl();
 	}
 	
 	@Override

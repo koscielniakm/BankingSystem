@@ -5,14 +5,14 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import bs.model.persistence.entities.LoginEntity;
-import bs.model.persistence.validators.LoginValidator;
+import bs.model.persistence.validators.LoginValidatorImpl;
 
 public class LoginEntityDao extends AbstractEntityDao<LoginEntity> implements EntityDao<LoginEntity> {
 
-	private LoginValidator validator;
+	private LoginValidatorImpl validator;
 	
 	public LoginEntityDao() {
-		validator = new LoginValidator();
+		validator = new LoginValidatorImpl();
 	}
 	
 	@Override

@@ -12,7 +12,7 @@ import bs.model.persistence.entities.AccountEntity;
  * Validator for AccountEntity class.
  * @author Mateusz
  */
-public class AccountValidator extends AbstractValidator implements DaoValidator<AccountEntity> {
+public class AccountValidatorImpl extends AbstractValidator implements DaoValidator<AccountEntity> {
 
 	/**
 	 * Validate AccountEntity before database insertion.

@@ -6,7 +6,7 @@ import java.util.List;
 import bs.model.config.Finals;
 import bs.model.persistence.entities.NewsEntity;
 
-public class NewsValidator extends AbstractValidator implements DaoValidator<NewsEntity>{
+public class NewsValidatorImpl extends AbstractValidator implements DaoValidator<NewsEntity>{
 
 	@Override
 	public boolean validateBeforeCreate(NewsEntity entity) {

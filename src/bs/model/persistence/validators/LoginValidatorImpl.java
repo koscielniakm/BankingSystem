@@ -5,7 +5,7 @@ import java.util.List;
 
 import bs.model.persistence.entities.LoginEntity;
 
-public class LoginValidator extends AbstractValidator implements DaoValidator<LoginEntity> {
+public class LoginValidatorImpl extends AbstractValidator implements DaoValidator<LoginEntity> {
 
 	@Override
 	public boolean validateBeforeCreate(LoginEntity entity) {
