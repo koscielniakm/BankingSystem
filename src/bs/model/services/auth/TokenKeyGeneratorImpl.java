@@ -4,15 +4,13 @@ import java.security.Key;
 
 import javax.crypto.spec.SecretKeySpec;
 
-import io.jsonwebtoken.SignatureAlgorithm;
+import bs.model.config.Finals;
 
 public class TokenKeyGeneratorImpl implements TokenKeyGenerator {
 
-	public static final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;
-	
 	private static final byte[] TOKEN_SECRET = "Yn2kjibddFAWtnPJ2AFlL8WXmohJMCvigQggaEypa5E=".getBytes();
 	
-	private static final Key TOKEN_KEY = new SecretKeySpec(TOKEN_SECRET, SIGNATURE_ALGORITHM.getJcaName());
+	private static final Key TOKEN_KEY = new SecretKeySpec(TOKEN_SECRET, Finals.JWT_SIGNATURE_ALGORITHM.getJcaName());
 
 	@Override
 	public Key generateKey() {

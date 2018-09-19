@@ -22,7 +22,7 @@ public class TokenEncoderImpl {
 			.setId(userData.getUserId().toString())
 			.setIssuedAt(Date.from(Instant.ofEpochSecond(dateNow.getTime())))
 			.setExpiration(Date.from(Instant.ofEpochSecond(expirationDate.getTime())))
-			.signWith(TokenKeyGeneratorImpl.SIGNATURE_ALGORITHM, key)
+			.signWith(Finals.JWT_SIGNATURE_ALGORITHM, key)
 			.compact();
 	}
 	
