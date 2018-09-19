@@ -8,7 +8,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 public class TokenKeyGeneratorImpl implements TokenKeyGenerator {
 
-	private static final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;
+	public static final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;
 	
 	private static final byte[] TOKEN_SECRET = "Yn2kjibddFAWtnPJ2AFlL8WXmohJMCvigQggaEypa5E=".getBytes();
 	
