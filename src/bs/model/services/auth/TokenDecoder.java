@@ -6,6 +6,6 @@ public interface TokenDecoder {
 	 * 
 	 * @return Status of token validation.
 	 */
-	public TokenValidationStatus decode(UserAuthData authData);
+	public UserAuthData decode(String token);
 	
 }
