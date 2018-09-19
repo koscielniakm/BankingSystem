@@ -5,7 +5,7 @@ package bs.model.services.auth;
  * Instace of this class is sending to TokenEncoder / TokenDecoder classes.
  * @author Mateusz
  */
-public class UserAuthDataImpl {
+public class UserAuthDataImpl implements UserAuthData {
 	
 	private Integer userId;
 	
