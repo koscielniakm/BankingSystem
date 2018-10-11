@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.persistence.NoResultException;
 
-import bs.model.persistence.dao.AccountEntityDao;
+import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.entities.AccountEntity;
 import bs.model.services.security.Hasher;
 
@@ -14,7 +14,7 @@ import bs.model.services.security.Hasher;
  */
 public class RegistrationService {
 
-	private AccountEntityDao accountDao;
+	private AccountDao accountDao;
 	
 	private AccountNumberGenerator numberGenerator;
 	
@@ -23,7 +23,7 @@ public class RegistrationService {
 	private RegistrationStatus status;
 	
 	public RegistrationService() {
-		accountDao = new AccountEntityDao();
+		accountDao = new AccountDao();
 		numberGenerator = new AccountNumberGenerator();
 		status = RegistrationStatus.PENDING;
 	}

@@ -6,8 +6,6 @@ import javax.ws.rs.core.Application;
 @ApplicationPath("")
 public class BankingSystemApplication extends Application {
 	
-	public BankingSystemApplication() {
-		System.out.println("Works");
-	}
+	public BankingSystemApplication() { }
 	
 }

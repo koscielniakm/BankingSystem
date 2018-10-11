@@ -12,7 +12,6 @@ public class Finals {
 	public static final Long JWT_EXPIRANTION_MILIS = 86400000L; // 1 day
 	public static final SignatureAlgorithm JWT_SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;
 	
-	
 	// Database
 	public static final int DB_ACCOUNT_ACCOUNTNUMBER_LENGTH = 9;
 	public static final int DB_ACCOUNT_ACCOUNTNUMBER_MIN_VALUE = 100000000;

@@ -2,7 +2,7 @@ package bs.model.services.misc;
 
 import java.util.List;
 
-import bs.model.persistence.dao.NewsEntityDao;
+import bs.model.persistence.dao.NewsDao;
 import bs.model.persistence.entities.NewsEntity;
 
 /**
@@ -11,10 +11,10 @@ import bs.model.persistence.entities.NewsEntity;
  */
 public class NewsService {
 
-	private NewsEntityDao dao;
+	private NewsDao dao;
 	
 	public NewsService() {
-		dao = new NewsEntityDao();
+		dao = new NewsDao();
 	}
 	
 	/**
