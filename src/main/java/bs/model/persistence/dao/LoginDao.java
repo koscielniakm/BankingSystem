@@ -3,6 +3,7 @@ package bs.model.persistence.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 
 import bs.model.persistence.entities.LoginEntity;
 import bs.model.persistence.validators.LoginValidator;
@@ -16,17 +17,19 @@ public class LoginDao extends AbstractDao<LoginEntity> implements Dao<LoginEntit
 	}
 	
 	@Override
-	public boolean create(LoginEntity login) {
-		if (!validator.validateBeforeCreate(login)) return false;
-		super.persistEntity(login);
-		return true;
+	public LoginEntity create(LoginEntity login) {
+		if (validator.validateBeforeCreate(login))
+			return super.persistEntity(login);
+		else
+			throw new PersistenceException();
 	}
 
 	@Override
-	public boolean update(LoginEntity login) {
-		if (!validator.validateBeforeUpdate(login)) return false;
-		super.mergeEntity(login);
-		return true;
+	public LoginEntity update(LoginEntity login) {
+		if (validator.validateBeforeUpdate(login))
+			return super.mergeEntity(login);
+		else
+			throw new IllegalArgumentException();
 	}
 
 	@Override

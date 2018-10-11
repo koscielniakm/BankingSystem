@@ -13,15 +13,14 @@ public class NewsDao extends AbstractDao<NewsEntity> implements Dao<NewsEntity> 
 	}
 	
 	@Override
-	public boolean create(NewsEntity news) {
-		super.persistEntity(news);
-		return true;
+	public NewsEntity create(NewsEntity news) {
+		return super.persistEntity(news); // TODO validator!
 	}
 
 	@Override
-	public boolean update(NewsEntity login) {
+	public NewsEntity update(NewsEntity login) {
 		super.mergeEntity(login);
-		return true;
+		return login;
 	}
 
 	@Override

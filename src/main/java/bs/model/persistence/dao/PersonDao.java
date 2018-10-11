@@ -3,6 +3,7 @@ package bs.model.persistence.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 
 import bs.model.persistence.entities.PersonEntity;
 import bs.model.persistence.validators.PersonValidator;
@@ -16,17 +17,19 @@ public class PersonDao extends AbstractDao<PersonEntity> implements Dao<PersonEn
 	}
 	
 	@Override
-	public boolean create(PersonEntity person) {
-		if (!validator.validateBeforeCreate(person)) return false;
-		super.persistEntity(person);
-		return true;
+	public PersonEntity create(PersonEntity person) {
+		if (validator.validateBeforeCreate(person))
+			return super.persistEntity(person);
+		else
+			throw new PersistenceException();
 	}
 
 	@Override
-	public boolean update(PersonEntity person) {
-		if (!validator.validateBeforeUpdate(person)) return false;
-		super.mergeEntity(person);
-		return true;
+	public PersonEntity update(PersonEntity person) {
+		if (validator.validateBeforeUpdate(person))
+			return super.mergeEntity(person);
+		else
+			throw new IllegalArgumentException();
 	}
 
 	@Override

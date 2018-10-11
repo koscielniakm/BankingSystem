@@ -22,7 +22,7 @@ public abstract class AbstractDao<T extends DbEntity> {
 	/**
 	 * @param entity Entity class which has to be inserted.
 	 */
-	protected void persistEntity(T entity) {
+	protected T persistEntity(T entity) {
 		EntityManager entityManager = persistenceSupport.getEntityManager();
 		EntityTransaction currentTranslation = entityManager.getTransaction();
 		currentTranslation.begin();
@@ -30,18 +30,20 @@ public abstract class AbstractDao<T extends DbEntity> {
 		entityManager.persist(entity);
 		currentTranslation.commit();
 		persistenceSupport.closeEntityManager();
+		return entity;
 	}
 	
 	/**
 	 * @param entity Entity class which has to be updated.
 	 */
-	protected void mergeEntity(T entity) {
+	protected T mergeEntity(T entity) {
 		EntityManager entityManager = persistenceSupport.getEntityManager();
 		EntityTransaction currentTranslation = entityManager.getTransaction();
 		currentTranslation.begin();
 		entityManager.merge(entity);
 		currentTranslation.commit();
 		persistenceSupport.closeEntityManager();
+		return entity;
 	}
 	
 	/**

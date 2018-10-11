@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import bs.model.persistence.entities.AccountEntity;
@@ -18,17 +19,19 @@ public class AccountDao extends AbstractDao<AccountEntity> implements Dao<Accoun
 	}
 	
 	@Override
-	public boolean create(AccountEntity account) {
-		if (!validator.validateBeforeCreate(account)) return false;
-		super.persistEntity(account);
-		return true;
+	public AccountEntity create(AccountEntity account) {
+		if (validator.validateBeforeCreate(account))
+			return super.persistEntity(account);
+		else
+			throw new PersistenceException();
 	}
 
 	@Override
-	public boolean update(AccountEntity account) {
-		if (!validator.validateBeforeUpdate(account)) return false;
-		super.mergeEntity(account);
-		return true;
+	public AccountEntity update(AccountEntity account) {
+		if (validator.validateBeforeUpdate(account))
+			return super.mergeEntity(account);
+		else
+			throw new IllegalArgumentException();
 	}
 
 	@Override

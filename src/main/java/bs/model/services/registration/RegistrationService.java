@@ -3,6 +3,7 @@ package bs.model.services.registration;
 import java.util.Date;
 
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
 
 import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.entities.AccountEntity;
@@ -36,7 +37,15 @@ public class RegistrationService {
 	 */
 	public boolean register(String password, String email) {
 		AccountEntity generatedAccount = generateAccount(password, email);
-		return accountDao.create(generatedAccount) ? doRegisterSuccess(generatedAccount) : doRegisterFailed();
+		try
+		{
+			generatedAccount = accountDao.create(generatedAccount);
+		}
+		catch (PersistenceException e)
+		{
+			return doRegisterFailed();
+		}
+		return doRegisterSuccess(generatedAccount);
 	}
 	
 	/**
