@@ -20,6 +20,11 @@ public interface LoginService {
 	public AccountEntity getLoggedAccount();
 	
 	/**
+	 * @return Account number.
+	 */
+	public String getAccountNumber();
+	
+	/**
 	 * @return Status of current login process.
 	 */
 	public LoginStatus getStatus();
