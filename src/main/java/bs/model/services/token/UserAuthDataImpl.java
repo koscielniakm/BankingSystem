@@ -1,4 +1,4 @@
-package bs.model.services.auth;
+package bs.model.services.token;
 
 /**
  * Class should contain necessary data to token validation.

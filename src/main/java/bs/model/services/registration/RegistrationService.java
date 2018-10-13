@@ -7,7 +7,7 @@ import javax.persistence.PersistenceException;
 
 import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.entities.AccountEntity;
-import bs.model.services.security.Hasher;
+import bs.model.services.crypto.Hasher;
 
 /**
  * Service used to register new account. 

@@ -6,7 +6,7 @@ import javax.persistence.PersistenceException;
 
 import bs.model.persistence.dao.LoginDao;
 import bs.model.persistence.entities.LoginEntity;
-import bs.model.services.security.IpGetter;
+import bs.model.services.crypto.IpGetter;
 
 public class LoginAttemptRegistratorImpl implements LoginAttemptRegistrator {
 
