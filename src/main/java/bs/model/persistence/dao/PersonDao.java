@@ -41,14 +41,14 @@ public class PersonDao extends AbstractDao<PersonEntity> implements Dao<PersonEn
 
 	@Override
 	public PersonEntity getById(int id) {
-		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		EntityManager entityManager = getEntityManager();
 		PersonEntity person = entityManager.find(PersonEntity.class, id);
 		return person;
 	}
 
 	@Override
 	public List<PersonEntity> getAll() {
-		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		EntityManager entityManager = getEntityManager();
 		List<PersonEntity> people = entityManager
 			.createQuery("FROM PersonEntity p", PersonEntity.class).getResultList();
 		return people;

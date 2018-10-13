@@ -31,21 +31,21 @@ public class NewsDao extends AbstractDao<NewsEntity> implements Dao<NewsEntity> 
 
 	@Override
 	public NewsEntity getById(int id) {
-		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		EntityManager entityManager = getEntityManager();
 		NewsEntity login = entityManager.find(NewsEntity.class, id);
 		return login;
 	}
 
 	@Override
 	public List<NewsEntity> getAll() {
-		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		EntityManager entityManager = getEntityManager();
 		List<NewsEntity> list = entityManager
 			.createQuery("FROM NewsEntity n", NewsEntity.class).getResultList();
 		return list;
 	}
 	
 	public List<NewsEntity> getLast(Integer number) {
-		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		EntityManager entityManager = getEntityManager();
 		List<NewsEntity> list = entityManager
 			.createQuery("FROM NewsEntity n ORDER BY n.date DESC", NewsEntity.class)
 			.setMaxResults(number)

@@ -41,14 +41,14 @@ public class LoginDao extends AbstractDao<LoginEntity> implements Dao<LoginEntit
 
 	@Override
 	public LoginEntity getById(int id) {
-		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		EntityManager entityManager = getEntityManager();
 		LoginEntity login = entityManager.find(LoginEntity.class, id);
 		return login;
 	}
 
 	@Override
 	public List<LoginEntity> getAll() {
-		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		EntityManager entityManager = getEntityManager();
 		List<LoginEntity> loginList = entityManager
 			.createQuery("FROM LoginEntity log", LoginEntity.class).getResultList();
 		return loginList;

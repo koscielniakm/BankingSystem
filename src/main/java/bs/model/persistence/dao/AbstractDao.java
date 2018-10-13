@@ -60,8 +60,12 @@ public abstract class AbstractDao<T extends DbEntity> {
 		persistenceSupport.closeEntityManager();
 	}
 
-	protected PersistenceSupport getPersistenceSupport() {
-		return persistenceSupport;
+	protected EntityManager getEntityManager() {
+		return persistenceSupport.getEntityManager();
+	}
+	
+	protected void closeEntityManager() {
+		persistenceSupport.closeEntityManager();
 	}
 
 }

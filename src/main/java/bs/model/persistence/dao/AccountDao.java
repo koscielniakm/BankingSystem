@@ -43,21 +43,21 @@ public class AccountDao extends AbstractDao<AccountEntity> implements Dao<Accoun
 
 	@Override
 	public AccountEntity getById(int id) {
-		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		EntityManager entityManager = getEntityManager();
 		AccountEntity accountById = entityManager.find(AccountEntity.class, id);
 		return accountById;
 	}
 
 	@Override
 	public List<AccountEntity> getAll() {
-		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		EntityManager entityManager = getEntityManager();
 		List<AccountEntity> allAccounts = entityManager
 			.createQuery("FROM AccountEntity a", AccountEntity.class).getResultList();
 		return allAccounts;
 	}
 	
 	public List<AccountEntity> getByAccountNumber(int accountNumber) {
-		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		EntityManager entityManager = getEntityManager();
 		List<AccountEntity> accounts = entityManager
 			.createQuery("FROM AccountEntity a WHERE a.accountNumber = :accountNumber", AccountEntity.class)
 			.setParameter("accountNumber", accountNumber)
@@ -68,7 +68,7 @@ public class AccountDao extends AbstractDao<AccountEntity> implements Dao<Accoun
 	// Login
 	public AccountEntity getByAccountNumberAndPassword(String accountNumber, String password) {
 		Integer accountNumberInt = Integer.parseInt(accountNumber);
-		EntityManager entityManager = getPersistenceSupport().getEntityManager();
+		EntityManager entityManager = getEntityManager();
 		Query query =  entityManager
 			.createQuery("FROM AccountEntity a WHERE a.accountNumber = :accountNumber AND a.password = :password")
 			.setParameter("accountNumber", accountNumberInt)
@@ -84,7 +84,7 @@ public class AccountDao extends AbstractDao<AccountEntity> implements Dao<Accoun
 		}
 		finally
 		{
-			getPersistenceSupport().closeEntityManager();
+			closeEntityManager();
 		}
 		return loggedAccount;
 	}
