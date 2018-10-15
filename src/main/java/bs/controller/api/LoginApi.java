@@ -8,7 +8,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import bs.model.services.auth.LoginServiceImpl;
+import bs.model.services.auth.LoginService;
+import bs.model.services.auth.LoginServiceFactory;
 
 @Path("/")
 public class LoginApi {
@@ -20,7 +21,7 @@ public class LoginApi {
 	public Response login(JsonObject incomingData) {
 		String incomingInput = incomingData.getString("Input");
 		String incomingPassword = incomingData.getString("Password");
-		LoginServiceImpl loginService = new LoginServiceImpl(incomingInput, incomingPassword);
+		LoginService loginService = LoginServiceFactory.getLoginService(incomingInput, incomingPassword);
 		boolean status = loginService.login();
 		if (status) return Response.ok().build();
 		else return Response.status(400).build();	

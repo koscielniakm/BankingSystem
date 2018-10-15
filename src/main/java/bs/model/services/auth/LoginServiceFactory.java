@@ -1,11 +1,14 @@
 package bs.model.services.auth;
 
-public class LoginServiceFactory implements AuthServiceFactory {
+import bs.model.persistence.dao.AccountDao;
 
-	@Override
-	public LoginService getLoginService() {
-		// TODO Auto-generated method stub
-		return null;
+public class LoginServiceFactory{
+
+	private LoginServiceFactory() { }
+	
+	public static LoginService getLoginService(String accountNumber, String password) {
+		UserAuthData userAuthData = new UserAuthData(accountNumber, password);
+		return new LoginServiceImpl(userAuthData, new AccountDao());
 	}
 
 }

@@ -4,7 +4,6 @@ import javax.persistence.NoResultException;
 
 import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.entities.AccountEntity;
-import bs.model.services.crypto.Hasher;
 
 /**
  * Class used to login user into application. 
