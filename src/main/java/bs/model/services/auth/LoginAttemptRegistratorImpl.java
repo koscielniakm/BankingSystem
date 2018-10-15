@@ -14,9 +14,9 @@ public class LoginAttemptRegistratorImpl implements LoginAttemptRegistrator {
 	
 	private LoginDao dao;
 	
-	public LoginAttemptRegistratorImpl(LoginService service) {
+	public LoginAttemptRegistratorImpl(LoginService service, LoginDao dao) {
 		this.service = service;
-		this.dao = new LoginDao();
+		this.dao = dao;
 	}
 	
 	public boolean registerLoginAttempt() {
