@@ -4,19 +4,19 @@ public class DaoFactory {
 
 	private DaoFactory() { }
 	
-	public AccountDao getAccountDao() {
+	public static AccountDao getAccountDao() {
 		return new AccountDaoImpl();
 	}
 	
-	public LoginDao getLoginDao() {
+	public static LoginDao getLoginDao() {
 		return new LoginDaoImpl();
 	}
 	
-	public NewsDao getNewsDao() {
+	public static NewsDao getNewsDao() {
 		return new NewsDaoImpl();
 	}
 	
-	public PersonDao getPersonDao() {
+	public static PersonDao getPersonDao() {
 		return new PersonDaoImpl();
 	}
 	
