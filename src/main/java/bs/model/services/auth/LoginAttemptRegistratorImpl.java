@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.persistence.PersistenceException;
 
-import bs.model.persistence.dao.LoginDao;
+import bs.model.persistence.dao.LoginDaoImpl;
 import bs.model.persistence.entities.LoginEntity;
 import bs.model.services.crypto.IpGetter;
 
@@ -12,9 +12,9 @@ public class LoginAttemptRegistratorImpl implements LoginAttemptRegistrator {
 
 	private LoginService service;
 	
-	private LoginDao dao;
+	private LoginDaoImpl dao;
 	
-	public LoginAttemptRegistratorImpl(LoginService service, LoginDao dao) {
+	public LoginAttemptRegistratorImpl(LoginService service, LoginDaoImpl dao) {
 		this.service = service;
 		this.dao = dao;
 	}
