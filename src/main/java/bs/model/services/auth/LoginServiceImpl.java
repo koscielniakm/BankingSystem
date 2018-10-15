@@ -12,24 +12,21 @@ import bs.model.services.crypto.Hasher;
  */
 public class LoginServiceImpl implements LoginService {
 	
-	private String accountNumber;
-	
-	private String password;
-	
-	private AccountEntity loggedAccount;
+	private UserAuthData userAuthData;
 	
 	private AccountDao accountDao;
 	
 	private LoginStatus status;
 	
+	private AccountEntity loggedAccount;
+	
 	/**
-	 * @param accountNumber Number of account which user want to log in.
-	 * @param password Password (not hashed) entered by user.
+	 * @param userAuthData Data of user: account number and password (not hashed).
+	 * @param accountDao Instance of AccountDao.
 	 */
-	public LoginServiceImpl(String accountNumber, String password) {
-		this.accountNumber = accountNumber;
-		this.password = Hasher.hashPassword(password);
-		this.accountDao = new AccountDao();
+	public LoginServiceImpl(UserAuthData userAuthData, AccountDao accountDao) {
+		this.userAuthData = userAuthData;
+		this.accountDao = accountDao;
 		this.status = LoginStatus.PENDING;
 	}
 	
@@ -46,7 +43,7 @@ public class LoginServiceImpl implements LoginService {
 	 * @return Input account number.
 	 */
 	public String getAccountNumber() {
-		return accountNumber;
+		return userAuthData.getAccountNumber();
 	}
 	
 	/**
@@ -60,6 +57,8 @@ public class LoginServiceImpl implements LoginService {
 	 * @return Result of login try.
 	 */
 	public boolean login() {
+		String accountNumber = userAuthData.getAccountNumber();
+		String password = userAuthData.getPassword();
 		loggedAccount = accountDao.getByAccountNumberAndPassword(accountNumber, password);
 		return loggedAccount != null ? doLoginSuccess() : doLoginFailed();
 	}
