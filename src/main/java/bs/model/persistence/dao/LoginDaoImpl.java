@@ -8,7 +8,7 @@ import javax.persistence.PersistenceException;
 import bs.model.persistence.entities.LoginEntity;
 import bs.model.persistence.validators.LoginValidator;
 
-public class LoginDaoImpl extends AbstractDao<LoginEntity> implements Dao<LoginEntity> {
+public class LoginDaoImpl extends AbstractDao<LoginEntity> implements LoginDao {
 
 	private LoginValidator validator;
 	

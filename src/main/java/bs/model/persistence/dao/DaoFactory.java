@@ -2,25 +2,22 @@ package bs.model.persistence.dao;
 
 public class DaoFactory {
 
-	private EntityClass entityClass;
+	private DaoFactory() { }
 	
-	public DaoFactory(EntityClass entityClass) {
-		this.entityClass = entityClass;
+	public AccountDao getAccountDao() {
+		return new AccountDaoImpl();
 	}
 	
-	public Dao<?> getDao() {
-		switch (entityClass) {
-			case ACCOUNT:
-				return new AccountDaoImpl();
-			case LOGIN:
-				return new LoginDaoImpl();
-			case NEWS:
-				return new NewsDaoImpl();
-			case PERSON:
-				return new PersonDaoImpl();
-			default:
-				throw new IllegalArgumentException();
-		}
+	public LoginDao getLoginDao() {
+		return new LoginDaoImpl();
+	}
+	
+	public NewsDao getNewsDao() {
+		return new NewsDaoImpl();
+	}
+	
+	public PersonDao getPersonDao() {
+		return new PersonDaoImpl();
 	}
 	
 }
