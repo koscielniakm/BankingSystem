@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 
-import bs.model.persistence.dao.AccountDaoImpl;
+import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.entities.AccountEntity;
 import bs.model.services.crypto.Hasher;
 
@@ -15,7 +15,7 @@ import bs.model.services.crypto.Hasher;
  */
 public class RegistrationService {
 
-	private AccountDaoImpl accountDao;
+	private AccountDao accountDao;
 	
 	private AccountNumberGenerator numberGenerator;
 	
@@ -23,9 +23,9 @@ public class RegistrationService {
 	
 	private RegistrationStatus status;
 	
-	public RegistrationService() {
-		accountDao = new AccountDaoImpl();
-		numberGenerator = new AccountNumberGenerator();
+	public RegistrationService(AccountDao accountDao, AccountNumberGenerator numberGenerator) {
+		this.accountDao = accountDao;
+		this.numberGenerator = numberGenerator;
 		status = RegistrationStatus.PENDING;
 	}
 	

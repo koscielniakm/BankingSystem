@@ -2,7 +2,8 @@ package bs.model.services.misc;
 
 import java.util.List;
 
-import bs.model.persistence.dao.NewsDaoImpl;
+import bs.model.persistence.dao.DaoFactory;
+import bs.model.persistence.dao.NewsDao;
 import bs.model.persistence.entities.NewsEntity;
 
 /**
@@ -11,10 +12,10 @@ import bs.model.persistence.entities.NewsEntity;
  */
 public class NewsService {
 
-	private NewsDaoImpl dao;
+	private NewsDao dao;
 	
 	public NewsService() {
-		dao = new NewsDaoImpl();
+		dao = DaoFactory.getNewsDao(); // TODO constructor
 	}
 	
 	/**

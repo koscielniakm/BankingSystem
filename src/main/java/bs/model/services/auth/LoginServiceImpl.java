@@ -2,7 +2,7 @@ package bs.model.services.auth;
 
 import javax.persistence.NoResultException;
 
-import bs.model.persistence.dao.AccountDaoImpl;
+import bs.model.persistence.dao.AccountDao;
 import bs.model.persistence.entities.AccountEntity;
 
 /**
@@ -13,7 +13,7 @@ public class LoginServiceImpl implements LoginService {
 	
 	private UserAuthData userAuthData;
 	
-	private AccountDaoImpl accountDao;
+	private AccountDao accountDao;
 	
 	private LoginStatus status;
 	
@@ -23,7 +23,7 @@ public class LoginServiceImpl implements LoginService {
 	 * @param userAuthData Data of user: account number and password (not hashed).
 	 * @param accountDao Instance of AccountDao.
 	 */
-	public LoginServiceImpl(UserAuthData userAuthData, AccountDaoImpl accountDao) {
+	public LoginServiceImpl(UserAuthData userAuthData, AccountDao accountDao) {
 		this.userAuthData = userAuthData;
 		this.accountDao = accountDao;
 		this.status = LoginStatus.PENDING;
