@@ -11,6 +11,7 @@ public class Finals {
 	public static final String JWT_SECRET_PATH = "app-config.xml";
 	public static final Long JWT_EXPIRANTION_MILIS = 86400000L; // 1 day
 	public static final SignatureAlgorithm JWT_SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;
+	public static final String JTW_HEADER_NAME = "Token";
 	
 	// Database
 	public static final int DB_ACCOUNT_ACCOUNTNUMBER_LENGTH = 9;
