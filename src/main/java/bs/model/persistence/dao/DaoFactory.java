@@ -12,4 +12,8 @@ public class DaoFactory {
 		return new AccountTypeDaoImpl();
 	}
 	
+	public static ClientDao getClientDao() {
+		return new ClientDaoImpl();
+	}
+	
 }

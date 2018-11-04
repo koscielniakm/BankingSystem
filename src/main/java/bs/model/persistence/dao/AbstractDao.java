@@ -6,7 +6,7 @@ import javax.persistence.Query;
 
 import bs.model.persistence.entities.DbEntity;
 
-public abstract class AbstractDao<T extends DbEntity> {
+abstract class AbstractDao<T extends DbEntity> {
 
 	private PersistenceSupport persistenceSupport;
 	
