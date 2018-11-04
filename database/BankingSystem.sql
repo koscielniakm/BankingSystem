@@ -2,11 +2,8 @@ CREATE TABLE `Client` (
 	`ID` bigint NOT NULL AUTO_INCREMENT,
 	`Client_Number` bigint(9) NOT NULL,
 	`Password` varchar(64) NOT NULL,
-	`Email` varchar(50),
 	`Date_Open` DATETIME NOT NULL,
 	`Date_Close` DATETIME,
-	`First_Name` varchar(30),
-	`Last_Name` varchar(30),
 	PRIMARY KEY (`ID`)
 );
 
@@ -20,8 +17,8 @@ CREATE TABLE `Account` (
 );
 
 CREATE TABLE `Account_Type` (
-	`ID` bigint NOT NULL AUTO_INCREMENT,
-	`Type` varchar(20) NOT NULL AUTO_INCREMENT,
+	`ID` bigint NOT NULL,
+	`Type` varchar(20) NOT NULL,
 	PRIMARY KEY (`ID`)
 );
 
@@ -98,6 +95,58 @@ CREATE TABLE `Outgoing_Money_Transfer` (
 	PRIMARY KEY (`ID`)
 );
 
+CREATE TABLE `Document_Type` (
+	`ID` bigint NOT NULL AUTO_INCREMENT,
+	`Type` varchar(25) NOT NULL,
+	PRIMARY KEY (`ID`)
+);
+
+CREATE TABLE `Document` (
+	`ID` bigint NOT NULL AUTO_INCREMENT,
+	`Document_Type_ID` bigint NOT NULL,
+	`Value` varchar(50) NOT NULL,
+	PRIMARY KEY (`ID`)
+);
+
+CREATE TABLE `Contact` (
+	`ID` bigint NOT NULL AUTO_INCREMENT,
+	`Contact_Type_ID` bigint NOT NULL,
+	`Value` bigint NOT NULL,
+	PRIMARY KEY (`ID`)
+);
+
+CREATE TABLE `Contact_Type` (
+	`ID` bigint NOT NULL AUTO_INCREMENT,
+	`Type` varchar(40) NOT NULL,
+	PRIMARY KEY (`ID`)
+);
+
+CREATE TABLE `Address` (
+	`ID` bigint NOT NULL AUTO_INCREMENT,
+	`Country` varchar(20) NOT NULL,
+	`City` varchar(30) NOT NULL,
+	`Address` varchar(40) NOT NULL,
+	`Address_Type` bigint NOT NULL,
+	PRIMARY KEY (`ID`)
+);
+
+CREATE TABLE `Address_Type` (
+	`ID` bigint NOT NULL AUTO_INCREMENT,
+	`Type` varchar(20) NOT NULL,
+	PRIMARY KEY (`ID`)
+);
+
+CREATE TABLE `Person` (
+	`ID` bigint NOT NULL AUTO_INCREMENT,
+	`Client_ID` bigint NOT NULL,
+	`First_Name` varchar(30) NOT NULL,
+	`Last_Name` varchar(30) NOT NULL,
+	`Default_Document` varchar(30) NOT NULL,
+	`Default_Address` bigint NOT NULL,
+	`Default_Contact` bigint NOT NULL,
+	PRIMARY KEY (`ID`)
+);
+
 ALTER TABLE `Account` ADD CONSTRAINT `Account_fk0` FOREIGN KEY (`Client_ID`) REFERENCES `Client`(`ID`);
 
 ALTER TABLE `Account` ADD CONSTRAINT `Account_fk1` FOREIGN KEY (`Account_Type_ID`) REFERENCES `Account_Type`(`ID`);
@@ -121,4 +170,18 @@ ALTER TABLE `Incoming_Money_Transfer` ADD CONSTRAINT `Incoming_Money_Transfer_fk
 ALTER TABLE `Outgoing_Money_Transfer` ADD CONSTRAINT `Outgoing_Money_Transfer_fk0` FOREIGN KEY (`Account_ID`) REFERENCES `Account`(`ID`);
 
 ALTER TABLE `Outgoing_Money_Transfer` ADD CONSTRAINT `Outgoing_Money_Transfer_fk1` FOREIGN KEY (`Money_Transfer_Data_ID`) REFERENCES `Money_Transfer_Data`(`ID`);
+
+ALTER TABLE `Document` ADD CONSTRAINT `Document_fk0` FOREIGN KEY (`Document_Type_ID`) REFERENCES `Document_Type`(`ID`);
+
+ALTER TABLE `Contact` ADD CONSTRAINT `Contact_fk0` FOREIGN KEY (`Contact_Type_ID`) REFERENCES `Contact_Type`(`ID`);
+
+ALTER TABLE `Address` ADD CONSTRAINT `Address_fk0` FOREIGN KEY (`Address_Type`) REFERENCES `Address_Type`(`ID`);
+
+ALTER TABLE `Person` ADD CONSTRAINT `Person_fk0` FOREIGN KEY (`Client_ID`) REFERENCES `Client`(`ID`);
+
+ALTER TABLE `Person` ADD CONSTRAINT `Person_fk1` FOREIGN KEY (`Default_Document`) REFERENCES `Document`(`ID`);
+
+ALTER TABLE `Person` ADD CONSTRAINT `Person_fk2` FOREIGN KEY (`Default_Address`) REFERENCES `Address`(`ID`);
+
+ALTER TABLE `Person` ADD CONSTRAINT `Person_fk3` FOREIGN KEY (`Default_Contact`) REFERENCES `Contact`(`ID`);
 
