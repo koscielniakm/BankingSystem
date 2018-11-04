@@ -2,7 +2,7 @@ package bs.model.persistence.dao;
 
 import java.util.List;
 
-public interface Dao<T> {
+interface Dao<T> {
 	public T create(T obj);
 	public T update(T obj);
 	public boolean delete(int id);

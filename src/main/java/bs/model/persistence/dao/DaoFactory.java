@@ -8,4 +8,8 @@ public class DaoFactory {
 		return new AccountDaoImpl();
 	}
 	
+	public static AccountTypeDao getAccountTypeDao() {
+		return new AccountTypeDaoImpl();
+	}
+	
 }
