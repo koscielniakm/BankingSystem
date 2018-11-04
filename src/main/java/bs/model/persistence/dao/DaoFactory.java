@@ -4,6 +4,14 @@ public class DaoFactory {
 
 	private DaoFactory() { }
 	
+	/* new db schema */
+	
+	public static ClientDao getClientDao() {
+		return new ClientDaoImpl();
+	}
+	
+	/* deprecated ! */
+	
 	public static AccountDao getAccountDao() {
 		return new AccountDaoImpl();
 	}
