@@ -12,6 +12,10 @@ public class DaoFactory {
 		return new AccountTypeDaoImpl();
 	}
 	
+	public static AddressDao getAddressDao() {
+		return new AddressDaoImpl();
+	}
+	
 	public static ClientDao getClientDao() {
 		return new ClientDaoImpl();
 	}
