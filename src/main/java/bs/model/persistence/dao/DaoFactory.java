@@ -4,4 +4,8 @@ public class DaoFactory {
 
 	private DaoFactory() { }
 	
+	public static AccountDao getAccountDao() {
+		return new AccountDaoImpl();
+	}
+	
 }
