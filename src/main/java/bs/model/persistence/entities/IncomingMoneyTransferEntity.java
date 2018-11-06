@@ -13,9 +13,9 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "incoming_money_transfer")
-public class IncomingMoneyTransfer implements DbEntity {
+public class IncomingMoneyTransferEntity implements DbEntity {
 
-	public IncomingMoneyTransfer() { }
+	public IncomingMoneyTransferEntity() { }
 	
 	@Id
 	@Column(name = "ID")

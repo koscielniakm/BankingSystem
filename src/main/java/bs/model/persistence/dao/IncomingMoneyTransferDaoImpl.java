@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import bs.model.persistence.entities.IncomingMoneyTransfer;
+import bs.model.persistence.entities.IncomingMoneyTransferEntity;
 
-public class IncomingMoneyTransferDaoImpl extends AbstractDao<IncomingMoneyTransfer> implements IncomingMoneyTransferDao {
+public class IncomingMoneyTransferDaoImpl extends AbstractDao<IncomingMoneyTransferEntity> implements IncomingMoneyTransferDao {
 
 	@Override
 	public IncomingMoneyTransferDao create(IncomingMoneyTransferDao obj) {

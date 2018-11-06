@@ -60,6 +60,8 @@ public class DaoFactory {
 		return new IncomingMoneyTransferDaoImpl();
 	}
 	
-	
+	public static MoneyTransferDao getMoneyTransferDao() {
+		return new MoneyTransferDaoImpl();
+	}
 	
 }
