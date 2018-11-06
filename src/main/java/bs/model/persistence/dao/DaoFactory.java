@@ -28,6 +28,10 @@ public class DaoFactory {
 		return new CardDaoImpl();
 	}
 	
+	public static CardTypeDao getCardTypeDao() {
+		return new CardTypeDaoImpl();
+	}
+	
 	public static ClientDao getClientDao() {
 		return new ClientDaoImpl();
 	}
