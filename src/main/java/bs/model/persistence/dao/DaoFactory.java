@@ -40,4 +40,8 @@ public class DaoFactory {
 		return new ContactDaoImpl();
 	}
 	
+	public static ContactTypeDao getContactTypeEntity() {
+		return new ContactTypeDaoImpl();
+	}
+	
 }
