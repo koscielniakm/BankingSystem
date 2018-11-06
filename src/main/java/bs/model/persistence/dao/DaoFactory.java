@@ -68,4 +68,8 @@ public class DaoFactory {
 		return new OutgoingMoneyTransferDaoImpl();
 	}
 	
+	public static PaymentDao getPaymentDao() {
+		return new PaymentDaoImpl();
+	}
+	
 }
