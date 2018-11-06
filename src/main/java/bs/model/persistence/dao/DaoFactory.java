@@ -56,4 +56,10 @@ public class DaoFactory {
 		return new DocumentTypeDaoImpl();
 	}
 	
+	public static IncomingMoneyTransferDao getIncomingMoneyTransferDao() {
+		return new IncomingMoneyTransferDaoImpl();
+	}
+	
+	
+	
 }
