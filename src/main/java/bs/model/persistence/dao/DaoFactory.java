@@ -52,6 +52,8 @@ public class DaoFactory {
 		return new DocumentDaoImpl();
 	}
 	
-	
+	public static DocumentTypeDao getDocumentTypeDao() {
+		return new DocumentTypeDaoImpl();
+	}
 	
 }
