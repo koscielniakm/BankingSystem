@@ -36,4 +36,8 @@ public class DaoFactory {
 		return new ClientDaoImpl();
 	}
 	
+	public static ContactDao getContactDao() {
+		return new ContactDaoImpl();
+	}
+	
 }
