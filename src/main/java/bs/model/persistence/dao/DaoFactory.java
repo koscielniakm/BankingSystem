@@ -72,4 +72,8 @@ public class DaoFactory {
 		return new PaymentDaoImpl();
 	}
 	
+	public static PersonDao getPersonDao() {
+		return new PersonDaoImpl();
+	}
+	
 }
