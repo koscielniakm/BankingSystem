@@ -48,4 +48,10 @@ public class DaoFactory {
 		return new CyclicalMoneyTransferDaoImpl();
 	}
 	
+	public static DocumentDao getDocumentDao() {
+		return new DocumentDaoImpl();
+	}
+	
+	
+	
 }
