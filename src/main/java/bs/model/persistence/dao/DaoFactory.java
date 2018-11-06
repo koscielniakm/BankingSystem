@@ -44,4 +44,8 @@ public class DaoFactory {
 		return new ContactTypeDaoImpl();
 	}
 	
+	public static CyclicalMoneyTransferDao getCyclicalMoneyTransferDao() {
+		return new CyclicalMoneyTransferDaoImpl();
+	}
+	
 }
