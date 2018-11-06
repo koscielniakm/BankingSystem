@@ -24,6 +24,10 @@ public class DaoFactory {
 		return new AuthorizationDaoImpl();
 	}
 	
+	public static CardDao getCardDao() {
+		return new CardDaoImpl();
+	}
+	
 	public static ClientDao getClientDao() {
 		return new ClientDaoImpl();
 	}
