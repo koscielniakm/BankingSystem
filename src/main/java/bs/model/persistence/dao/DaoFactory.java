@@ -16,6 +16,14 @@ public class DaoFactory {
 		return new AddressDaoImpl();
 	}
 	
+	public static AddressTypeDao getAddressTypeDao() {
+		return new AddressTypeDaoImpl();
+	}
+	
+	public static AuthorizationDao getAuthorizationDao() {
+		return new AuthorizationDaoImpl();
+	}
+	
 	public static ClientDao getClientDao() {
 		return new ClientDaoImpl();
 	}
